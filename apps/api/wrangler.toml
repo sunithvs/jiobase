@@ -1,0 +1,19 @@
+name = "jiobase-api"
+main = "src/index.ts"
+compatibility_date = "2025-02-27"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jiobase-db"
+database_id = "local"
+migrations_dir = "drizzle"
+
+[[kv_namespaces]]
+binding = "PROXY_CONFIG"
+id = "local"
+preview_id = "local"
+
+[vars]
+ENVIRONMENT = "development"
+APP_URL = "http://localhost:5173"

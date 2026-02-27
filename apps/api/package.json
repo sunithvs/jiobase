@@ -1,0 +1,27 @@
+{
+  "name": "@jiobase/api",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 8788",
+    "build": "wrangler deploy --dry-run --outdir=dist",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply jiobase-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply jiobase-db --remote"
+  },
+  "dependencies": {
+    "@jiobase/shared": "workspace:*",
+    "drizzle-orm": "^0.39.0",
+    "hono": "^4.7.0",
+    "nanoid": "^5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250214.0",
+    "drizzle-kit": "^0.30.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^3.109.0"
+  }
+}

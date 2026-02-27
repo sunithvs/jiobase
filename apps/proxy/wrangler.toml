@@ -1,0 +1,28 @@
+name = "jiobase-proxy"
+main = "src/index.ts"
+compatibility_date = "2025-02-27"
+compatibility_flags = ["nodejs_compat"]
+
+# Custom domain routing (configure after domain setup)
+# routes = [
+#   { pattern = "*.jiobase.com", zone_name = "jiobase.com" }
+# ]
+
+[[kv_namespaces]]
+binding = "PROXY_CONFIG"
+id = "local"
+preview_id = "local"
+
+[[kv_namespaces]]
+binding = "RATE_LIMITS"
+id = "local"
+preview_id = "local"
+
+# Analytics Engine for request metrics
+# [[analytics_engine_datasets]]
+# binding = "ANALYTICS"
+# dataset = "proxy_requests"
+
+[vars]
+ENVIRONMENT = "development"
+PROXY_DOMAIN = "jiobase.com"
