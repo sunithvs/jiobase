@@ -6,9 +6,21 @@ import type { AppEnv } from './types.js';
 
 const app = new Hono<AppEnv>();
 
-// CORS — allow dashboard origin
+// CORS — allow dashboard origins
+const ALLOWED_ORIGINS = [
+  'https://app.jiobase.com',
+  'https://jiobase-web.pages.dev',
+  'http://localhost:5173',
+];
+
 app.use('/api/*', cors({
-  origin: (origin) => origin || '*',
+  origin: (origin) => {
+    if (!origin) return '*';
+    if (ALLOWED_ORIGINS.includes(origin)) return origin;
+    // Allow *.pages.dev preview deploys
+    if (origin.endsWith('.jiobase-web.pages.dev')) return origin;
+    return null as any;
+  },
   credentials: true,
   allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization'],

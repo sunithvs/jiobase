@@ -3,10 +3,9 @@ main = "src/index.ts"
 compatibility_date = "2025-02-27"
 compatibility_flags = ["nodejs_compat"]
 
-# Custom domain routing (configure after domain setup)
-# routes = [
-#   { pattern = "*.jiobase.com", zone_name = "jiobase.com" }
-# ]
+routes = [
+  { pattern = "*.jiobase.com/*", zone_name = "jiobase.com" }
+]
 
 [[kv_namespaces]]
 binding = "PROXY_CONFIG"

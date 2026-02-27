@@ -1,4 +1,7 @@
-const API_BASE = '/api';
+// In dev: Vite proxies /api to localhost:8788
+// In production: API is on api.jiobase.com
+const isDev = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+const API_BASE = isDev ? '/api' : 'https://api.jiobase.com/api';
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {

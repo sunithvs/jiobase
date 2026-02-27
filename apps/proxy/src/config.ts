@@ -6,11 +6,16 @@ export async function resolveConfig(
 ): Promise<{ config: ProxyConfig; slug: string } | null> {
   const proxyDomain = env.PROXY_DOMAIN || 'jiobase.com';
 
+  // Reserved subdomains — not proxy targets
+  const RESERVED = ['api', 'app', 'www'];
+
   let slug: string | null = null;
 
   // Check if it's a subdomain of our proxy domain: <slug>.jiobase.com
   if (hostname.endsWith(`.${proxyDomain}`)) {
     slug = hostname.replace(`.${proxyDomain}`, '');
+    // Skip reserved subdomains
+    if (RESERVED.includes(slug)) return null;
   }
 
   if (slug) {

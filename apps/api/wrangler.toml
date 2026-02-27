@@ -3,6 +3,10 @@ main = "src/index.ts"
 compatibility_date = "2025-02-27"
 compatibility_flags = ["nodejs_compat"]
 
+routes = [
+  { pattern = "api.jiobase.com/*", zone_name = "jiobase.com" }
+]
+
 [[d1_databases]]
 binding = "DB"
 database_name = "jiobase-db"
@@ -15,4 +19,4 @@ id = "7ab7e07aa2ae4cada455bd45e59efa14"
 
 [vars]
 ENVIRONMENT = "production"
-APP_URL = "https://jiobase-web.pages.dev"
+APP_URL = "https://app.jiobase.com"
