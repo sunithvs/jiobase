@@ -18,6 +18,21 @@ export default {
       const resolved = await resolveConfig(url.hostname, env);
 
       if (!resolved) {
+        // For reserved subdomains (app, www) and root domain, proxy to Pages
+        const hostname = url.hostname;
+        const proxyDomain = env.PROXY_DOMAIN || 'jiobase.com';
+        const PASSTHROUGH = ['app', 'www'];
+        const sub = hostname.endsWith(`.${proxyDomain}`)
+          ? hostname.replace(`.${proxyDomain}`, '')
+          : null;
+
+        if (hostname === proxyDomain || (sub && PASSTHROUGH.includes(sub))) {
+          // Rewrite to Pages origin to avoid Worker route loop
+          const pagesUrl = new URL(request.url);
+          pagesUrl.hostname = 'jiobase-web.pages.dev';
+          return fetch(new Request(pagesUrl, request));
+        }
+
         return Response.json(
           { error: 'App not found. Check your proxy URL.' },
           { status: 404 }

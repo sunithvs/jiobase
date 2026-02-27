@@ -8,6 +8,8 @@ const app = new Hono<AppEnv>();
 
 // CORS — allow dashboard origins
 const ALLOWED_ORIGINS = [
+  'https://jiobase.com',
+  'https://www.jiobase.com',
   'https://app.jiobase.com',
   'https://jiobase-web.pages.dev',
   'http://localhost:5173',
