@@ -1,30 +1,41 @@
 <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background circle with subtle gradient -->
   <defs>
     <linearGradient id="bgGrad" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#1a1a1a"/>
-      <stop offset="100%" stop-color="#0d0d0d"/>
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
     </linearGradient>
-    <linearGradient id="boltGrad" x1="48" y1="20" x2="80" y2="108" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#a3e635"/>
+    <linearGradient id="boltGrad" x1="52" y1="24" x2="76" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5eead4"/>
       <stop offset="50%" stop-color="#3ecf8e"/>
-      <stop offset="100%" stop-color="#249361"/>
+      <stop offset="100%" stop-color="#22a965"/>
     </linearGradient>
-    <linearGradient id="shieldGrad" x1="20" y1="16" x2="108" y2="112" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#3ecf8e" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="#3ecf8e" stop-opacity="0.05"/>
+    <linearGradient id="ringGrad" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3ecf8e" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#3ecf8e" stop-opacity="0.1"/>
     </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+    </filter>
   </defs>
 
-  <!-- Outer rounded square -->
-  <rect x="2" y="2" width="124" height="124" rx="28" fill="url(#bgGrad)" stroke="#3ecf8e" stroke-width="2" stroke-opacity="0.15"/>
+  <!-- Background rounded square -->
+  <rect width="128" height="128" rx="28" fill="url(#bgGrad)"/>
 
-  <!-- Shield shape (proxy/protection) -->
-  <path d="M64 18C64 18 28 32 28 58C28 84 48 104 64 112C80 104 100 84 100 58C100 32 64 18 64 18Z" fill="url(#shieldGrad)" stroke="#3ecf8e" stroke-width="1.5" stroke-opacity="0.2"/>
+  <!-- Outer ring (proxy/routing) -->
+  <circle cx="64" cy="64" r="46" fill="none" stroke="url(#ringGrad)" stroke-width="2.5"/>
 
-  <!-- Lightning bolt (speed/power) -->
-  <path d="M72 28L44 68H62L56 100L84 56H66L72 28Z" fill="url(#boltGrad)"/>
+  <!-- Dotted orbit paths (data routing) -->
+  <circle cx="64" cy="64" r="38" fill="none" stroke="#3ecf8e" stroke-width="0.75" stroke-opacity="0.15" stroke-dasharray="4 6"/>
 
-  <!-- Small glow effect behind bolt -->
-  <path d="M72 28L44 68H62L56 100L84 56H66L72 28Z" fill="#3ecf8e" opacity="0.15" filter="blur(4px)" transform="translate(0, 2)"/>
+  <!-- Glow behind bolt -->
+  <path d="M70 28L46 66H60L54 100L80 60H66L70 28Z" fill="#3ecf8e" opacity="0.2" filter="url(#glow)"/>
+
+  <!-- Lightning bolt (speed) -->
+  <path d="M70 28L46 66H60L54 100L80 60H66L70 28Z" fill="url(#boltGrad)"/>
+
+  <!-- Small data dots on the orbit -->
+  <circle cx="28" cy="48" r="2.5" fill="#3ecf8e" opacity="0.5"/>
+  <circle cx="100" cy="80" r="2.5" fill="#3ecf8e" opacity="0.5"/>
+  <circle cx="48" cy="102" r="2" fill="#3ecf8e" opacity="0.3"/>
+  <circle cx="88" cy="26" r="2" fill="#3ecf8e" opacity="0.3"/>
 </svg>

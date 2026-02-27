@@ -9,8 +9,9 @@
 		<div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
 			<a href="/" class="flex items-center gap-2">
 				<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-400/10">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="12" cy="12" r="10.5" stroke="#3ecf8e" stroke-width="1.5" stroke-opacity="0.4"/>
+						<path d="M13.5 3.5L7.5 12.5H11L9.5 20.5L16.5 11H13L13.5 3.5Z" fill="#3ecf8e"/>
 					</svg>
 				</div>
 				<span class="text-lg font-bold text-white">JioBase</span>

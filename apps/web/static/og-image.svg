@@ -1,0 +1,85 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgG" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="bG" x1="96" y1="180" x2="140" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5eead4"/>
+      <stop offset="50%" stop-color="#3ecf8e"/>
+      <stop offset="100%" stop-color="#22a965"/>
+    </linearGradient>
+    <linearGradient id="rG" x1="50" y1="160" x2="220" y2="470" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3ecf8e" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#3ecf8e" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="lineG" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3ecf8e" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#3ecf8e" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#3ecf8e" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3ecf8e" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="gl">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgG)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(100,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(200,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(300,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(400,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(500,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(600,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(700,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(800,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(900,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(1000,0)"/>
+    <line x1="0" y1="0" x2="0" y2="630" stroke="white" stroke-width="1" transform="translate(1100,0)"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="white" stroke-width="1" transform="translate(0,100)"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="white" stroke-width="1" transform="translate(0,200)"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="white" stroke-width="1" transform="translate(0,300)"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="white" stroke-width="1" transform="translate(0,400)"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="white" stroke-width="1" transform="translate(0,500)"/>
+  </g>
+
+  <!-- Logo icon (centered left area) -->
+  <g transform="translate(80, 180)">
+    <!-- Outer ring -->
+    <circle cx="75" cy="75" r="60" fill="none" stroke="url(#rG)" stroke-width="3"/>
+    <!-- Orbit dots -->
+    <circle cx="75" cy="75" r="50" fill="none" stroke="#3ecf8e" stroke-width="1" stroke-opacity="0.12" stroke-dasharray="5 8"/>
+    <!-- Glow -->
+    <path d="M82 18L58 72H72L66 132L92 68H78L82 18Z" fill="#3ecf8e" opacity="0.2" filter="url(#gl)"/>
+    <!-- Bolt -->
+    <path d="M82 18L58 72H72L66 132L92 68H78L82 18Z" fill="url(#bG)"/>
+    <!-- Data dots -->
+    <circle cx="20" cy="40" r="3" fill="#3ecf8e" opacity="0.4"/>
+    <circle cx="130" cy="110" r="3" fill="#3ecf8e" opacity="0.4"/>
+  </g>
+
+  <!-- Text content -->
+  <text x="310" y="270" fill="white" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="72">JioBase</text>
+  <text x="310" y="340" fill="#9ca3af" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="28">Unblock Supabase in India</text>
+
+  <!-- Divider line -->
+  <line x1="310" y1="370" x2="800" y2="370" stroke="url(#lineG)" stroke-width="1"/>
+
+  <!-- Subtitle -->
+  <text x="310" y="410" fill="#6b7280" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="22">Managed Cloudflare reverse proxy for Supabase.</text>
+  <text x="310" y="445" fill="#6b7280" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="22">Bypass ISP DNS blocks with zero code changes.</text>
+
+  <!-- Domain badge -->
+  <rect x="310" y="475" width="220" height="40" rx="8" fill="#3ecf8e" fill-opacity="0.08" stroke="#3ecf8e" stroke-opacity="0.2" stroke-width="1"/>
+  <text x="330" y="502" fill="#3ecf8e" font-family="monospace" font-size="18" font-weight="500">jiobase.com</text>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="3" fill="#3ecf8e" opacity="0.6"/>
+
+  <!-- Bottom border -->
+  <rect x="0" y="627" width="1200" height="3" fill="#3ecf8e" opacity="0.2"/>
+</svg>
