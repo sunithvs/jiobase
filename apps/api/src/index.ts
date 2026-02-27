@@ -17,7 +17,8 @@ const ALLOWED_ORIGINS = [
 
 app.use('/api/*', cors({
   origin: (origin) => {
-    if (!origin) return '*';
+    // Reject requests with no Origin header in production (prevents certain CSRF vectors)
+    if (!origin) return null as any;
     if (ALLOWED_ORIGINS.includes(origin)) return origin;
     // Allow *.pages.dev preview deploys
     if (origin.endsWith('.jiobase-web.pages.dev')) return origin;
@@ -40,7 +41,8 @@ app.route('/api/apps', apps);
 // Global error handler
 app.onError((err, c) => {
   console.error('Unhandled error:', err.message, err.stack);
-  return c.json({ error: 'Internal server error', message: err.message }, 500);
+  // Don't expose internal error details to clients
+  return c.json({ error: 'Internal server error' }, 500);
 });
 
 // 404 fallback
