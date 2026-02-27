@@ -189,11 +189,11 @@
 
 			<!-- Solution arrow -->
 			<div class="mt-12 text-center">
-				<div class="inline-flex items-center gap-3 rounded-full border border-brand-400/20 bg-brand-400/5 px-6 py-3">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<div class="inline-flex items-center gap-3 rounded-full border border-brand-400/20 bg-brand-400/5 px-4 py-3 sm:px-6">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0">
 						<polyline points="20 6 9 17 4 12"/>
 					</svg>
-					<span class="text-sm font-medium text-brand-400">
+					<span class="text-xs sm:text-sm font-medium text-brand-400 text-left">
 						JioBase fixes this at the infrastructure level - your users don't need to do anything
 					</span>
 				</div>
@@ -557,7 +557,7 @@
 				</div>
 
 				<p class="text-xs text-gray-600">
-					&copy; {new Date().getFullYear()} JioBase. Built on Cloudflare.
+					&copy; {new Date().getFullYear()} JioBase. Built by <a href="https://sunithvs.com?utm_source=jiobase&utm_medium=footer&utm_campaign=website" target="_blank" rel="noopener" class="text-gray-500 hover:text-gray-300 transition">sunithvs</a>
 				</p>
 			</div>
 		</div>

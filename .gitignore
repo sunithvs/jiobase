@@ -11,3 +11,4 @@ build/
 *.log
 .DS_Store
 .d1/
+.idea

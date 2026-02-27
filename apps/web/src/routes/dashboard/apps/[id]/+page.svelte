@@ -58,12 +58,12 @@
 {:else if error}
 	<div class="rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</div>
 {:else if app}
-	<div class="flex items-center justify-between">
-		<div>
+	<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+		<div class="min-w-0">
 			<a href="/dashboard" class="text-sm text-gray-400 transition hover:text-brand-400">&larr; Back to apps</a>
-			<h1 class="mt-2 text-2xl font-bold text-white">{app.name}</h1>
+			<h1 class="mt-2 text-2xl font-bold text-white truncate">{app.name}</h1>
 		</div>
-		<div class="flex gap-2">
+		<div class="flex gap-2 shrink-0">
 			<a
 				href="/dashboard/apps/{app.id}/settings"
 				class="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-gray-300 transition hover:border-white/20 hover:text-white"
@@ -85,8 +85,8 @@
 	<div class="mt-6 glass-card rounded-xl p-5">
 		<p class="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">Proxy URL</p>
 		<div class="flex items-center gap-2">
-			<code class="flex-1 text-sm text-brand-400">https://{app.slug}.{JIOBASE_DOMAIN}</code>
-			<button onclick={copyUrl} class="rounded-md border border-white/10 px-2.5 py-1 text-xs text-gray-400 transition hover:border-white/20 hover:text-white">
+			<code class="flex-1 truncate text-sm text-brand-400">https://{app.slug}.{JIOBASE_DOMAIN}</code>
+			<button onclick={copyUrl} class="shrink-0 rounded-md border border-white/10 px-2.5 py-1 text-xs text-gray-400 transition hover:border-white/20 hover:text-white">
 				{copied ? 'Copied!' : 'Copy'}
 			</button>
 		</div>
@@ -106,7 +106,7 @@
 	</div>
 
 	<!-- Stats -->
-	<div class="mt-6 grid grid-cols-3 gap-4">
+	<div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
 		<div class="glass-card rounded-xl p-4">
 			<p class="text-xs text-gray-500">Status</p>
 			<p class="mt-1 text-lg font-semibold {app.is_active ? 'text-brand-400' : 'text-gray-400'}">
@@ -127,20 +127,20 @@
 	<div class="mt-6 glass-card rounded-xl p-5">
 		<h2 class="mb-3 text-sm font-medium text-gray-300">Details</h2>
 		<dl class="space-y-2.5 text-sm">
-			<div class="flex justify-between">
-				<dt class="text-gray-500">Upstream</dt>
-				<dd class="text-gray-200">{app.supabase_url}</dd>
+			<div class="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+				<dt class="text-gray-500 shrink-0">Upstream</dt>
+				<dd class="text-gray-200 truncate">{app.supabase_url}</dd>
 			</div>
-			<div class="flex justify-between">
-				<dt class="text-gray-500">Allowed Origins</dt>
-				<dd class="text-gray-200">{app.allowed_origins}</dd>
+			<div class="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+				<dt class="text-gray-500 shrink-0">Allowed Origins</dt>
+				<dd class="text-gray-200 break-all">{app.allowed_origins}</dd>
 			</div>
-			<div class="flex justify-between">
-				<dt class="text-gray-500">Enabled Services</dt>
-				<dd class="text-gray-200">{app.enabled_services}</dd>
+			<div class="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+				<dt class="text-gray-500 shrink-0">Enabled Services</dt>
+				<dd class="text-gray-200 break-all">{app.enabled_services}</dd>
 			</div>
-			<div class="flex justify-between">
-				<dt class="text-gray-500">Created</dt>
+			<div class="flex flex-col gap-0.5 sm:flex-row sm:justify-between">
+				<dt class="text-gray-500 shrink-0">Created</dt>
 				<dd class="text-gray-200">{formatDate(app.created_at)}</dd>
 			</div>
 		</dl>
