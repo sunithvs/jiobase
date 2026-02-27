@@ -1,1 +1,66 @@
 @import 'tailwindcss';
+
+@theme {
+	--color-brand-200: #a3e635;
+	--color-brand-300: #84cc16;
+	--color-brand-400: #3ecf8e;
+	--color-brand-500: #22c55e;
+	--color-brand-600: #16a34a;
+	--color-brand-700: #15803d;
+	--color-surface-100: #171717;
+	--color-surface-200: #1c1c1c;
+	--color-surface-300: #232323;
+	--color-surface-400: #282828;
+	--color-surface-500: #2e2e2e;
+	--color-surface-600: #343434;
+	--color-surface-700: #3e3e3e;
+	--color-surface-800: #505050;
+	--color-surface-900: #707070;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.glow-brand {
+	background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(62, 207, 142, 0.12) 0%, transparent 70%);
+}
+
+.text-gradient {
+	background: linear-gradient(135deg, #3ecf8e 0%, #a3e635 50%, #3ecf8e 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.glass-card {
+	background: rgba(30, 30, 30, 0.6);
+	backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.code-block {
+	background: #0d0d0d;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.border-glow {
+	position: relative;
+}
+.border-glow::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 1px;
+	background: linear-gradient(135deg, rgba(62, 207, 142, 0.3), transparent 50%, rgba(163, 230, 53, 0.3));
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	pointer-events: none;
+}
