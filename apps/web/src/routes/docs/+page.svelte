@@ -1,29 +1,18 @@
+<script lang="ts">
+	import Navbar from '$lib/components/Navbar.svelte';
+</script>
+
 <svelte:head>
 	<title>Documentation - JioBase</title>
 	<meta name="description" content="Learn how to set up JioBase to proxy your Supabase traffic through Cloudflare's edge network and bypass ISP DNS blocks in India." />
 </svelte:head>
 
 <div class="min-h-screen bg-[#0a0a0a]">
-	<!-- Nav -->
-	<nav class="border-b border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl">
-		<div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-			<a href="/" class="flex items-center gap-2">
-				<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-400/10">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M12 2L20 6.5V12C20 17 16.5 21 12 23C7.5 21 4 17 4 12V6.5L12 2Z" fill="none" stroke="#3ecf8e" stroke-width="1.5"/>
-						<path d="M9 12.5L14 12.5L12.5 10L16 12.5L12.5 15L14 12.5" fill="#3ecf8e"/>
-					</svg>
-				</div>
-				<span class="text-lg font-bold text-white">JioBase</span>
-			</a>
-			<div class="flex items-center gap-6">
-				<a href="/docs" class="text-sm font-medium text-brand-400">Docs</a>
-				<a href="/blog" class="text-sm text-gray-400 transition hover:text-white">Blog</a>
-				<a href="/login" class="text-sm text-gray-400 transition hover:text-white">Login</a>
-				<a href="/register" class="rounded-lg bg-brand-400 px-4 py-2 text-sm font-semibold text-black transition hover:bg-brand-300">Get Started</a>
-			</div>
-		</div>
-	</nav>
+	<Navbar active="docs" />
+
+	<!-- Spacer for fixed navbar -->
+	<div class="pt-[73px]">
+	</div>
 
 	<div class="mx-auto max-w-4xl px-6 py-16">
 		<!-- Header -->
