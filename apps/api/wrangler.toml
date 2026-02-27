@@ -6,14 +6,13 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB"
 database_name = "jiobase-db"
-database_id = "local"
+database_id = "f3c420b4-f034-4dcd-8aaa-2af9991df82a"
 migrations_dir = "drizzle"
 
 [[kv_namespaces]]
 binding = "PROXY_CONFIG"
-id = "local"
-preview_id = "local"
+id = "7ab7e07aa2ae4cada455bd45e59efa14"
 
 [vars]
-ENVIRONMENT = "development"
-APP_URL = "http://localhost:5173"
+ENVIRONMENT = "production"
+APP_URL = "https://jiobase-web.pages.dev"

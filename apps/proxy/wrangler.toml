@@ -10,13 +10,11 @@ compatibility_flags = ["nodejs_compat"]
 
 [[kv_namespaces]]
 binding = "PROXY_CONFIG"
-id = "local"
-preview_id = "local"
+id = "7ab7e07aa2ae4cada455bd45e59efa14"
 
 [[kv_namespaces]]
 binding = "RATE_LIMITS"
-id = "local"
-preview_id = "local"
+id = "72e372abe2c748beb8a23608623381ad"
 
 # Analytics Engine for request metrics
 # [[analytics_engine_datasets]]
@@ -24,5 +22,5 @@ preview_id = "local"
 # dataset = "proxy_requests"
 
 [vars]
-ENVIRONMENT = "development"
+ENVIRONMENT = "production"
 PROXY_DOMAIN = "jiobase.com"
