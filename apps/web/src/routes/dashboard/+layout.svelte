@@ -48,6 +48,24 @@
 			</div>
 		</nav>
 
+		<!-- Donation banner -->
+		<div class="border-b border-white/5 bg-brand-400/5">
+			<div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-2.5">
+				<p class="text-sm text-gray-400">
+					JioBase is free & open source. If it helps you, consider supporting the project.
+				</p>
+				<a
+					href="https://buymeacoffee.com/sunithvs"
+					target="_blank"
+					rel="noopener"
+					class="flex items-center gap-1.5 rounded-lg border border-brand-400/20 bg-brand-400/10 px-3 py-1.5 text-xs font-medium text-brand-400 transition hover:bg-brand-400/20"
+				>
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+					Buy me a coffee
+				</a>
+			</div>
+		</div>
+
 		<!-- Page content -->
 		<main class="mx-auto max-w-5xl px-6 py-8">
 			{@render children()}

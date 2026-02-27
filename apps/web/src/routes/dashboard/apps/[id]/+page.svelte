@@ -56,25 +56,25 @@
 {#if loading}
 	<div class="text-center text-gray-400">Loading...</div>
 {:else if error}
-	<div class="rounded-md bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</div>
+	<div class="rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</div>
 {:else if app}
 	<div class="flex items-center justify-between">
 		<div>
-			<a href="/dashboard" class="text-sm text-gray-400 hover:text-gray-300">&larr; Back to apps</a>
+			<a href="/dashboard" class="text-sm text-gray-400 transition hover:text-brand-400">&larr; Back to apps</a>
 			<h1 class="mt-2 text-2xl font-bold text-white">{app.name}</h1>
 		</div>
 		<div class="flex gap-2">
 			<a
 				href="/dashboard/apps/{app.id}/settings"
-				class="rounded-md border border-gray-700 px-3 py-1.5 text-sm text-gray-300 hover:border-gray-600"
+				class="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-gray-300 transition hover:border-white/20 hover:text-white"
 			>
 				Settings
 			</a>
 			<button
 				onclick={handleToggle}
-				class="rounded-md border border-gray-700 px-3 py-1.5 text-sm {app.is_active
-					? 'text-yellow-400 hover:border-yellow-600'
-					: 'text-green-400 hover:border-green-600'}"
+				class="rounded-lg border px-3 py-1.5 text-sm transition {app.is_active
+					? 'border-amber-500/20 text-amber-400 hover:bg-amber-500/10'
+					: 'border-brand-400/20 text-brand-400 hover:bg-brand-400/10'}"
 			>
 				{app.is_active ? 'Deactivate' : 'Activate'}
 			</button>
@@ -82,75 +82,77 @@
 	</div>
 
 	<!-- Proxy URL -->
-	<div class="mt-6 rounded-lg border border-gray-800 bg-gray-900 p-4">
-		<p class="mb-1 text-xs font-medium text-gray-400">PROXY URL</p>
+	<div class="mt-6 glass-card rounded-xl p-5">
+		<p class="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">Proxy URL</p>
 		<div class="flex items-center gap-2">
-			<code class="flex-1 text-sm text-blue-400">https://{app.slug}.{JIOBASE_DOMAIN}</code>
-			<button onclick={copyUrl} class="text-xs text-gray-400 hover:text-white">
+			<code class="flex-1 text-sm text-brand-400">https://{app.slug}.{JIOBASE_DOMAIN}</code>
+			<button onclick={copyUrl} class="rounded-md border border-white/10 px-2.5 py-1 text-xs text-gray-400 transition hover:border-white/20 hover:text-white">
 				{copied ? 'Copied!' : 'Copy'}
 			</button>
 		</div>
 	</div>
 
 	<!-- Quick integration snippet -->
-	<div class="mt-4 rounded-lg border border-gray-800 bg-gray-900 p-4">
-		<p class="mb-2 text-xs font-medium text-gray-400">QUICK INTEGRATION</p>
-		<pre class="overflow-x-auto text-xs text-gray-300"><code>import {'{'} createClient {'}'} from '@supabase/supabase-js'
+	<div class="mt-4 glass-card rounded-xl p-5">
+		<p class="mb-2 text-xs font-medium uppercase tracking-wider text-gray-500">Quick Integration</p>
+		<div class="code-block rounded-lg p-4">
+			<pre class="overflow-x-auto text-xs leading-6 text-gray-300"><code><span class="text-purple-400">import</span> {'{'} createClient {'}'} <span class="text-purple-400">from</span> <span class="text-amber-300">'@supabase/supabase-js'</span>
 
-const supabase = createClient(
-  'https://{app.slug}.{JIOBASE_DOMAIN}',
-  'your-anon-key'
+<span class="text-purple-400">const</span> <span class="text-blue-300">supabase</span> = <span class="text-yellow-200">createClient</span>(
+  <span class="text-brand-400">'https://{app.slug}.{JIOBASE_DOMAIN}'</span>,
+  <span class="text-amber-300">'your-anon-key'</span>
 )</code></pre>
+		</div>
 	</div>
 
 	<!-- Stats -->
 	<div class="mt-6 grid grid-cols-3 gap-4">
-		<div class="rounded-lg border border-gray-800 bg-gray-900 p-4">
-			<p class="text-xs text-gray-400">Status</p>
-			<p class="mt-1 text-lg font-semibold {app.is_active ? 'text-green-400' : 'text-gray-400'}">
+		<div class="glass-card rounded-xl p-4">
+			<p class="text-xs text-gray-500">Status</p>
+			<p class="mt-1 text-lg font-semibold {app.is_active ? 'text-brand-400' : 'text-gray-400'}">
 				{app.is_active ? 'Active' : 'Inactive'}
 			</p>
 		</div>
-		<div class="rounded-lg border border-gray-800 bg-gray-900 p-4">
-			<p class="text-xs text-gray-400">Requests (this month)</p>
+		<div class="glass-card rounded-xl p-4">
+			<p class="text-xs text-gray-500">Requests (this month)</p>
 			<p class="mt-1 text-lg font-semibold text-white">{app.request_count_month.toLocaleString()}</p>
 		</div>
-		<div class="rounded-lg border border-gray-800 bg-gray-900 p-4">
-			<p class="text-xs text-gray-400">Rate Limit</p>
+		<div class="glass-card rounded-xl p-4">
+			<p class="text-xs text-gray-500">Rate Limit</p>
 			<p class="mt-1 text-lg font-semibold text-white">{app.rate_limit_per_minute}/min</p>
 		</div>
 	</div>
 
 	<!-- Details -->
-	<div class="mt-6 rounded-lg border border-gray-800 bg-gray-900 p-4">
+	<div class="mt-6 glass-card rounded-xl p-5">
 		<h2 class="mb-3 text-sm font-medium text-gray-300">Details</h2>
-		<dl class="space-y-2 text-sm">
+		<dl class="space-y-2.5 text-sm">
 			<div class="flex justify-between">
-				<dt class="text-gray-400">Upstream</dt>
+				<dt class="text-gray-500">Upstream</dt>
 				<dd class="text-gray-200">{app.supabase_url}</dd>
 			</div>
 			<div class="flex justify-between">
-				<dt class="text-gray-400">Allowed Origins</dt>
+				<dt class="text-gray-500">Allowed Origins</dt>
 				<dd class="text-gray-200">{app.allowed_origins}</dd>
 			</div>
 			<div class="flex justify-between">
-				<dt class="text-gray-400">Enabled Services</dt>
+				<dt class="text-gray-500">Enabled Services</dt>
 				<dd class="text-gray-200">{app.enabled_services}</dd>
 			</div>
 			<div class="flex justify-between">
-				<dt class="text-gray-400">Created</dt>
+				<dt class="text-gray-500">Created</dt>
 				<dd class="text-gray-200">{formatDate(app.created_at)}</dd>
 			</div>
 		</dl>
 	</div>
 
 	<!-- Danger zone -->
-	<div class="mt-8 rounded-lg border border-red-900/50 p-4">
+	<div class="mt-8 rounded-xl border border-red-500/20 bg-red-500/5 p-5">
 		<h2 class="text-sm font-medium text-red-400">Danger Zone</h2>
 		<p class="mt-1 text-xs text-gray-400">Deleting an app removes it permanently and stops all proxied traffic.</p>
 		<button
 			onclick={handleDelete}
-			class="mt-3 rounded-md border border-red-800 px-3 py-1.5 text-sm text-red-400 hover:bg-red-500/10"
+			class="mt-3 rounded-lg border border-red-500/30 px-3 py-1.5 text-sm text-red-400 transition hover:bg-red-500/10"
 		>
 			Delete App
 		</button>

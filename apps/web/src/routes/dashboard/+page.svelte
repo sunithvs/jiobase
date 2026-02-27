@@ -27,7 +27,7 @@
 	<h1 class="text-2xl font-bold text-white">Your Apps</h1>
 	<a
 		href="/dashboard/apps/new"
-		class="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+		class="rounded-lg bg-brand-400 px-4 py-2 text-sm font-semibold text-black transition hover:bg-brand-300"
 	>
 		New App
 	</a>
@@ -36,13 +36,18 @@
 {#if loading}
 	<div class="mt-8 text-center text-gray-400">Loading apps...</div>
 {:else if error}
-	<div class="mt-8 rounded-md bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</div>
+	<div class="mt-8 rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</div>
 {:else if apps.length === 0}
 	<div class="mt-12 text-center">
-		<p class="text-gray-400">No apps yet.</p>
+		<div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-400/10">
+			<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+			</svg>
+		</div>
+		<p class="text-gray-400">No apps yet. Create your first proxy in seconds.</p>
 		<a
 			href="/dashboard/apps/new"
-			class="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+			class="mt-4 inline-block rounded-lg bg-brand-400 px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-brand-300"
 		>
 			Create your first app
 		</a>
@@ -52,7 +57,7 @@
 		{#each apps as app (app.id)}
 			<a
 				href="/dashboard/apps/{app.id}"
-				class="rounded-lg border border-gray-800 bg-gray-900 p-5 transition hover:border-gray-700"
+				class="glass-card rounded-xl p-5 transition hover:border-white/10"
 			>
 				<div class="flex items-start justify-between">
 					<div>
@@ -61,8 +66,8 @@
 					</div>
 					<span
 						class="rounded-full px-2 py-0.5 text-xs {app.is_active
-							? 'bg-green-500/10 text-green-400'
-							: 'bg-gray-700 text-gray-400'}"
+							? 'border border-brand-400/20 bg-brand-400/5 text-brand-400'
+							: 'bg-white/5 text-gray-400'}"
 					>
 						{app.is_active ? 'Active' : 'Inactive'}
 					</span>

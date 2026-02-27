@@ -1,0 +1,30 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with subtle gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="48" y1="20" x2="80" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a3e635"/>
+      <stop offset="50%" stop-color="#3ecf8e"/>
+      <stop offset="100%" stop-color="#249361"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="20" y1="16" x2="108" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3ecf8e" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#3ecf8e" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer rounded square -->
+  <rect x="2" y="2" width="124" height="124" rx="28" fill="url(#bgGrad)" stroke="#3ecf8e" stroke-width="2" stroke-opacity="0.15"/>
+
+  <!-- Shield shape (proxy/protection) -->
+  <path d="M64 18C64 18 28 32 28 58C28 84 48 104 64 112C80 104 100 84 100 58C100 32 64 18 64 18Z" fill="url(#shieldGrad)" stroke="#3ecf8e" stroke-width="1.5" stroke-opacity="0.2"/>
+
+  <!-- Lightning bolt (speed/power) -->
+  <path d="M72 28L44 68H62L56 100L84 56H66L72 28Z" fill="url(#boltGrad)"/>
+
+  <!-- Small glow effect behind bolt -->
+  <path d="M72 28L44 68H62L56 100L84 56H66L72 28Z" fill="#3ecf8e" opacity="0.15" filter="blur(4px)" transform="translate(0, 2)"/>
+</svg>

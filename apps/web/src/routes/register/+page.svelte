@@ -45,7 +45,7 @@
 				</div>
 				<span class="text-xl font-bold text-white">JioBase</span>
 			</a>
-			<p class="mt-3 text-sm text-gray-400">Create your account &mdash; it's free</p>
+			<p class="mt-3 text-sm text-gray-400">Create your account - it's free</p>
 		</div>
 
 		<div class="glass-card rounded-2xl p-6">

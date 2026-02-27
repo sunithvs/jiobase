@@ -29,7 +29,8 @@
 			<div class="hidden items-center gap-8 md:flex">
 				<a href="#features" class="text-sm text-gray-400 transition hover:text-white">Features</a>
 				<a href="#how-it-works" class="text-sm text-gray-400 transition hover:text-white">How it works</a>
-				<a href="#pricing" class="text-sm text-gray-400 transition hover:text-white">Pricing</a>
+				<a href="/docs" class="text-sm text-gray-400 transition hover:text-white">Docs</a>
+				<a href="/blog" class="text-sm text-gray-400 transition hover:text-white">Blog</a>
 			</div>
 
 			<div class="hidden items-center gap-3 md:flex">
@@ -63,7 +64,8 @@
 				<div class="flex flex-col gap-4">
 					<a href="#features" class="text-sm text-gray-400" onclick={() => mobileMenuOpen = false}>Features</a>
 					<a href="#how-it-works" class="text-sm text-gray-400" onclick={() => mobileMenuOpen = false}>How it works</a>
-					<a href="#pricing" class="text-sm text-gray-400" onclick={() => mobileMenuOpen = false}>Pricing</a>
+					<a href="/docs" class="text-sm text-gray-400" onclick={() => mobileMenuOpen = false}>Docs</a>
+					<a href="/blog" class="text-sm text-gray-400" onclick={() => mobileMenuOpen = false}>Blog</a>
 					<hr class="border-white/5" />
 					{#if auth.user}
 						<a href="/dashboard" class="rounded-lg bg-brand-400 px-4 py-2 text-center text-sm font-medium text-black">Dashboard</a>
@@ -84,7 +86,7 @@
 			<!-- Badge -->
 			<div class="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/5 px-4 py-1.5">
 				<span class="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
-				<span class="text-xs font-medium text-red-400">Supabase blocked on Jio, Airtel & ACT — Fix it now</span>
+				<span class="text-xs font-medium text-red-400">Supabase blocked on Jio, Airtel & ACT - Fix it now</span>
 			</div>
 
 			<h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
@@ -94,7 +96,7 @@
 			</h1>
 
 			<p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400 md:text-xl">
-				Indian ISPs are DNS-blocking <code class="rounded bg-white/5 px-1.5 py-0.5 text-base text-gray-300">*.supabase.co</code>. JioBase routes your Supabase API traffic through Cloudflare's edge network &mdash; no VPN required, no DNS changes for your users.
+				Indian ISPs are DNS-blocking <code class="rounded bg-white/5 px-1.5 py-0.5 text-base text-gray-300">*.supabase.co</code>. JioBase routes your Supabase API traffic through Cloudflare's edge network - no VPN required, no DNS changes for your users.
 			</p>
 
 			<div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -259,7 +261,7 @@
 						<polyline points="20 6 9 17 4 12"/>
 					</svg>
 					<span class="text-sm font-medium text-brand-400">
-						JioBase fixes this at the infrastructure level &mdash; your users don't need to do anything
+						JioBase fixes this at the infrastructure level - your users don't need to do anything
 					</span>
 				</div>
 			</div>
@@ -431,125 +433,63 @@
 	</section>
 
 
-	<!-- ===== PRICING ===== -->
+	<!-- ===== FREE & OPEN ===== -->
 	<section id="pricing" class="py-24 md:py-32">
-		<div class="mx-auto max-w-5xl px-6">
+		<div class="mx-auto max-w-3xl px-6">
 			<div class="text-center">
-				<p class="text-sm font-semibold uppercase tracking-wider text-brand-400">Pricing</p>
+				<p class="text-sm font-semibold uppercase tracking-wider text-brand-400">Free & Open Source</p>
 				<h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-					Start free, scale when ready
+					100% free. For now.
 				</h2>
 				<p class="mx-auto mt-4 max-w-xl text-gray-400">
-					Generous free tier for side projects. Predictable pricing for production apps.
+					JioBase is a community project built to help Indian developers affected by the Supabase DNS block. Everything is free for the time being - no limits, no paid tiers.
 				</p>
 			</div>
 
-			<div class="mt-16 grid gap-6 md:grid-cols-3">
-				<!-- Free -->
-				<div class="glass-card rounded-2xl p-8">
-					<h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400">Free</h3>
-					<div class="mt-4 flex items-baseline gap-1">
-						<span class="text-4xl font-bold">$0</span>
-						<span class="text-sm text-gray-500">/month</span>
-					</div>
-					<p class="mt-2 text-sm text-gray-400">Perfect for side projects and prototypes.</p>
-					<hr class="my-6 border-white/5" />
-					<ul class="space-y-3 text-sm text-gray-300">
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							1 proxy app
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							50,000 requests/month
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							Community support
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							Subdomain routing
-						</li>
-					</ul>
-					<a href="/register" class="mt-8 block rounded-lg border border-white/10 py-2.5 text-center text-sm font-medium text-white transition hover:border-white/20 hover:bg-white/5">
-						Get started
+			<div class="mt-12 glass-card rounded-2xl p-8 text-center">
+				<ul class="mx-auto max-w-sm space-y-4 text-left text-sm text-gray-300">
+					<li class="flex items-start gap-3">
+						<svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+						Unlimited proxy apps
+					</li>
+					<li class="flex items-start gap-3">
+						<svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+						Unlimited requests
+					</li>
+					<li class="flex items-start gap-3">
+						<svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+						Full Supabase API + WebSocket support
+					</li>
+					<li class="flex items-start gap-3">
+						<svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+						Custom subdomain routing
+					</li>
+					<li class="flex items-start gap-3">
+						<svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+						Open source on GitHub
+					</li>
+				</ul>
+
+				<div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+					<a href="/register" class="rounded-xl bg-brand-400 px-8 py-3 text-sm font-semibold text-black transition hover:bg-brand-300">
+						Get started free
+					</a>
+					<a
+						href="https://buymeacoffee.com/sunithvs"
+						target="_blank"
+						rel="noopener"
+						class="group flex items-center gap-2 rounded-xl border border-amber-400/20 bg-amber-400/5 px-6 py-3 text-sm font-medium text-amber-300 transition hover:border-amber-400/30 hover:bg-amber-400/10"
+					>
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+						</svg>
+						Buy me a coffee
 					</a>
 				</div>
 
-				<!-- Pro -->
-				<div class="border-glow relative rounded-2xl bg-surface-300 p-8">
-					<div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-400 px-3 py-0.5 text-xs font-semibold text-black">
-						Popular
-					</div>
-					<h3 class="text-sm font-semibold uppercase tracking-wider text-brand-400">Pro</h3>
-					<div class="mt-4 flex items-baseline gap-1">
-						<span class="text-4xl font-bold">$12</span>
-						<span class="text-sm text-gray-500">/month</span>
-					</div>
-					<p class="mt-2 text-sm text-gray-400">For production apps and growing teams.</p>
-					<hr class="my-6 border-white/5" />
-					<ul class="space-y-3 text-sm text-gray-300">
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							10 proxy apps
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							1M requests/month
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							Custom domains
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							Priority support
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							Analytics dashboard
-						</li>
-					</ul>
-					<a href="/register" class="mt-8 block rounded-lg bg-brand-400 py-2.5 text-center text-sm font-semibold text-black transition hover:bg-brand-300">
-						Start free trial
-					</a>
-				</div>
-
-				<!-- Enterprise -->
-				<div class="glass-card rounded-2xl p-8">
-					<h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400">Enterprise</h3>
-					<div class="mt-4 flex items-baseline gap-1">
-						<span class="text-4xl font-bold">Custom</span>
-					</div>
-					<p class="mt-2 text-sm text-gray-400">For organizations with specific needs.</p>
-					<hr class="my-6 border-white/5" />
-					<ul class="space-y-3 text-sm text-gray-300">
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							Unlimited proxy apps
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							Unlimited requests
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							Dedicated support
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							SLA & uptime guarantees
-						</li>
-						<li class="flex items-start gap-2">
-							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-							Custom integrations
-						</li>
-					</ul>
-					<a href="mailto:hello@jiobase.com" class="mt-8 block rounded-lg border border-white/10 py-2.5 text-center text-sm font-medium text-white transition hover:border-white/20 hover:bg-white/5">
-						Contact sales
-					</a>
-				</div>
+				<p class="mt-6 text-xs text-gray-500">
+					Running on Cloudflare Workers costs money. If JioBase saves you time, consider supporting the project.
+				</p>
 			</div>
 		</div>
 	</section>
@@ -572,7 +512,7 @@
 						<svg class="h-5 w-5 shrink-0 text-gray-500 transition group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
 					</summary>
 					<p class="mt-3 text-sm leading-relaxed text-gray-400">
-						Indian ISPs including Reliance Jio, Airtel, and ACT Fibernet are DNS-poisoning <code class="text-gray-300">*.supabase.co</code> domains, resolving them to sinkhole IPs instead of Supabase's actual servers. This appears to be due to a government ministry order. The block affects all Supabase API endpoints, Auth, Storage, and Realtime connections &mdash; but not supabase.com (different domain). JioBase routes your traffic through Cloudflare's unblocked infrastructure.
+						Indian ISPs including Reliance Jio, Airtel, and ACT Fibernet are DNS-poisoning <code class="text-gray-300">*.supabase.co</code> domains, resolving them to sinkhole IPs instead of Supabase's actual servers. This appears to be due to a government ministry order. The block affects all Supabase API endpoints, Auth, Storage, and Realtime connections - but not supabase.com (different domain). JioBase routes your traffic through Cloudflare's unblocked infrastructure.
 					</p>
 				</details>
 
@@ -582,7 +522,7 @@
 						<svg class="h-5 w-5 shrink-0 text-gray-500 transition group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
 					</summary>
 					<p class="mt-3 text-sm leading-relaxed text-gray-400">
-						Changing your own DNS might work for local development, but it doesn't help your end users. You can't ask every Jio or Airtel user to change their DNS settings. Some ISPs also use deep packet inspection (DPI) which blocks requests regardless of DNS settings. JioBase solves this at the infrastructure level &mdash; your users connect to <code class="text-brand-400">jiobase.com</code>, which is not blocked.
+						Changing your own DNS might work for local development, but it doesn't help your end users. You can't ask every Jio or Airtel user to change their DNS settings. Some ISPs also use deep packet inspection (DPI) which blocks requests regardless of DNS settings. JioBase solves this at the infrastructure level - your users connect to <code class="text-brand-400">jiobase.com</code>, which is not blocked.
 					</p>
 				</details>
 
@@ -592,7 +532,7 @@
 						<svg class="h-5 w-5 shrink-0 text-gray-500 transition group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
 					</summary>
 					<p class="mt-3 text-sm leading-relaxed text-gray-400">
-						JioBase is a transparent reverse proxy. We don't store, read, or modify your request or response data. Traffic flows from Cloudflare's edge directly to Supabase and back. All connections use HTTPS encryption end-to-end. The proxy is open-source &mdash; you can audit the code on GitHub.
+						JioBase is a transparent reverse proxy. We don't store, read, or modify your request or response data. Traffic flows from Cloudflare's edge directly to Supabase and back. All connections use HTTPS encryption end-to-end. The proxy is open-source - you can audit the code on GitHub.
 					</p>
 				</details>
 
@@ -602,7 +542,7 @@
 						<svg class="h-5 w-5 shrink-0 text-gray-500 transition group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
 					</summary>
 					<p class="mt-3 text-sm leading-relaxed text-gray-400">
-						Minimal &mdash; roughly 1-5ms. Cloudflare Workers execute at the edge closest to your users across 300+ locations globally. Since the alternative is <code class="text-red-400">ERR_CONNECTION_TIMED_OUT</code>, the tradeoff is negligible.
+						Minimal - roughly 1-5ms. Cloudflare Workers execute at the edge closest to your users across 300+ locations globally. Since the alternative is <code class="text-red-400">ERR_CONNECTION_TIMED_OUT</code>, the tradeoff is negligible.
 					</p>
 				</details>
 
@@ -622,7 +562,7 @@
 						<svg class="h-5 w-5 shrink-0 text-gray-500 transition group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
 					</summary>
 					<p class="mt-3 text-sm leading-relaxed text-gray-400">
-						You can switch back to direct Supabase URLs anytime &mdash; it's just a URL change. But many developers keep JioBase as an extra layer of resilience. If ISPs block Supabase once, they can do it again. Having a proxy means your app stays online regardless.
+						You can switch back to direct Supabase URLs anytime - it's just a URL change. But many developers keep JioBase as an extra layer of resilience. If ISPs block Supabase once, they can do it again. Having a proxy means your app stays online regardless.
 					</p>
 				</details>
 
