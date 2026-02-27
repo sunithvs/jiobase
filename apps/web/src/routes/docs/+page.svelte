@@ -36,6 +36,7 @@
 				<a href="#features" class="block text-gray-300 transition hover:text-brand-400">Supported features</a>
 				<a href="#configuration" class="block text-gray-300 transition hover:text-brand-400">Configuration options</a>
 				<a href="#faq" class="block text-gray-300 transition hover:text-brand-400">FAQ</a>
+				<a href="#self-host" class="block text-gray-300 transition hover:text-brand-400">Self-host your own proxy</a>
 			</nav>
 		</div>
 
@@ -489,6 +490,46 @@
 							Yes! JioBase is free and open source. If you find it useful, consider <a href="https://buymeacoffee.com/sunithvs" target="_blank" rel="noopener" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4">supporting the project</a>.
 						</div>
 					</details>
+				</div>
+			</section>
+
+
+			<!-- Self-host -->
+			<section id="self-host">
+				<h2 class="text-2xl font-bold tracking-tight text-white">Self-host your own proxy</h2>
+				<p class="mt-4 leading-relaxed text-gray-300">
+					Prefer full control? You can deploy your own Supabase proxy on Cloudflare Workers for free. Our generator tool creates a ready-to-deploy worker script — just enter your Supabase URL and follow the step-by-step guide.
+				</p>
+
+				<div class="mt-6 rounded-xl border border-brand-400/20 bg-brand-400/5 p-6">
+					<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+						<div>
+							<h3 class="font-semibold text-white">Worker Generator Tool</h3>
+							<p class="mt-1 text-sm text-gray-400">Generate a Cloudflare Worker script and deploy it yourself in under 10 minutes.</p>
+						</div>
+						<a
+							href="/tools/worker-generator"
+							class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand-400 px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-brand-300"
+						>
+							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+							Generate Worker Code
+						</a>
+					</div>
+
+					<div class="mt-5 grid gap-3 sm:grid-cols-3">
+						<div class="flex items-start gap-2">
+							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+							<span class="text-sm text-gray-300">100% free (Cloudflare free tier)</span>
+						</div>
+						<div class="flex items-start gap-2">
+							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+							<span class="text-sm text-gray-300">No third-party dependency</span>
+						</div>
+						<div class="flex items-start gap-2">
+							<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+							<span class="text-sm text-gray-300">Step-by-step deploy guide</span>
+						</div>
+					</div>
 				</div>
 			</section>
 

@@ -794,6 +794,74 @@
 	</section>
 
 
+	<!-- ===== FAQ ===== -->
+	<section class="mb-16">
+		<h2 class="mb-6 text-2xl font-bold tracking-tight">Frequently Asked Questions</h2>
+
+		<div class="space-y-4">
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Do I need a paid Cloudflare plan?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					No. The Cloudflare Workers free tier includes 100,000 requests per day, which is sufficient for most development and production apps. You only need a paid plan if you exceed that limit.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Will Supabase Auth (cookies, sessions) work through the proxy?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					Yes. The proxy forwards all headers, cookies, and request bodies unchanged. Supabase Auth (sign up, sign in, OAuth, magic links, password reset) works exactly the same through the proxy. Make sure your CORS configuration includes your frontend domain.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Can I use this with Supabase Storage file uploads?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					Yes. File uploads, downloads, signed URLs, and bucket management all work through the proxy. The Worker streams request and response bodies, so even large file uploads are handled efficiently.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">How much latency does the proxy add?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					Typically 1-5ms. Cloudflare Workers execute at the edge location closest to your users (300+ global locations), so the additional hop is minimal. This is significantly less than a VPN (50-200ms+).
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Can I skip the manual setup and use a managed solution?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					Yes. <a href="/register" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">JioBase</a> provides a managed Supabase reverse proxy with all the features described in this tutorial, plus a dashboard, analytics, rate limiting, and automatic updates. Free tier includes 50,000 requests/month.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Want a quick start without Wrangler CLI?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					Try our <a href="/tools/worker-generator" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">Worker Generator Tool</a>. Enter your Supabase URL, copy the generated code, and paste it directly into Cloudflare's dashboard editor. No CLI needed.
+				</div>
+			</details>
+		</div>
+	</section>
+
+
 	<!-- ===== Closing / Summary ===== -->
 	<section class="mb-16 border-t border-white/5 pt-12">
 		<h2 class="mb-6 text-2xl font-bold tracking-tight">Summary</h2>

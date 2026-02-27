@@ -31,6 +31,7 @@
 			<a href="/#features" class="text-sm transition {active === 'features' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Features</a>
 			<a href="/docs" class="text-sm transition {active === 'docs' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Docs</a>
 			<a href="/blog" class="text-sm transition {active === 'blog' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Blog</a>
+			<a href="/tools/worker-generator" class="text-sm transition {active === 'tools' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Tools</a>
 		</div>
 
 		<div class="hidden items-center gap-3 md:flex">
@@ -65,6 +66,7 @@
 				<a href="/#features" class="text-sm text-gray-400">Features</a>
 				<a href="/docs" class="text-sm text-gray-400">Docs</a>
 				<a href="/blog" class="text-sm text-gray-400">Blog</a>
+				<a href="/tools/worker-generator" class="text-sm text-gray-400">Tools</a>
 				<hr class="border-white/5" />
 				{#if auth.user}
 					<a href="/dashboard" class="rounded-lg bg-brand-400 px-4 py-2 text-center text-sm font-medium text-black">Dashboard</a>

@@ -7,6 +7,7 @@ const pages = [
   { path: '/blog/proxy-supabase-cloudflare-workers', priority: '0.7', changefreq: 'monthly' },
   { path: '/blog/why-indian-developers-need-supabase-proxy', priority: '0.7', changefreq: 'monthly' },
   { path: '/docs', priority: '0.8', changefreq: 'weekly' },
+  { path: '/tools/worker-generator', priority: '0.8', changefreq: 'monthly' },
   { path: '/login', priority: '0.3', changefreq: 'yearly' },
   { path: '/register', priority: '0.3', changefreq: 'yearly' },
 ];

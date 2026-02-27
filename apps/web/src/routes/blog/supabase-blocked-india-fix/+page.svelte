@@ -477,6 +477,64 @@
 	</section>
 
 
+	<!-- ===== FAQ ===== -->
+	<section class="mb-14">
+		<h2 class="mb-6 text-2xl font-bold tracking-tight">Frequently Asked Questions</h2>
+
+		<div class="space-y-4">
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Is Supabase still blocked in India?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					As of the last update, yes. The DNS block on <code class="rounded bg-white/5 px-1.5 py-0.5 text-gray-300">*.supabase.co</code> is still active on Jio, Airtel, and ACT Fibernet. There is no confirmed timeline for when it will be lifted. Using a reverse proxy is the most reliable solution.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Will changing DNS to 1.1.1.1 or 8.8.8.8 fix the issue?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					It may work for local development on some ISPs, but it is not a production solution. Some ISPs use Deep Packet Inspection (DPI) that blocks connections even with correct DNS. More importantly, your end users are on their ISP's default DNS and cannot change it.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Does the proxy affect my Supabase project security?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					No. The proxy is a transparent pass-through. It forwards all requests and headers (including your API keys) unchanged to Supabase over HTTPS. Your Row Level Security (RLS) policies, auth rules, and all other Supabase security features work exactly the same.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Can I self-host my own proxy instead of using JioBase?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					Yes! We provide a free <a href="/tools/worker-generator" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">Worker Generator Tool</a> that creates a ready-to-deploy Cloudflare Worker for you. Note that the self-hosted version does not include WebSocket/Realtime support, analytics, or rate limiting.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Which Supabase services work through the proxy?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					JioBase supports the complete Supabase API: REST (PostgREST), Authentication, Storage, Edge Functions, GraphQL, and Realtime WebSockets. Everything works transparently - just change the URL.
+				</div>
+			</details>
+		</div>
+	</section>
+
+
 	<!-- ===== Section 10: CTA ===== -->
 	<section class="mb-8">
 		<div class="rounded-2xl border border-brand-400/20 bg-brand-400/5 p-8 text-center sm:p-12">

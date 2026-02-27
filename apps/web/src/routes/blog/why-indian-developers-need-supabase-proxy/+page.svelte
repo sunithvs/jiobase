@@ -401,6 +401,64 @@
 	</section>
 
 
+	<!-- ===== FAQ ===== -->
+	<section class="mb-14">
+		<h2 class="mb-6 text-2xl font-bold tracking-tight">Frequently Asked Questions</h2>
+
+		<div class="space-y-4">
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Why is Supabase blocked in India?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					Indian ISPs are DNS-blocking <code class="rounded bg-white/5 px-1.5 py-0.5 text-gray-300">*.supabase.co</code> following a government ministry order. The block affects Jio, Airtel, ACT Fibernet, and other providers. The exact reason has not been publicly disclosed, which is common with Indian ISP blocks.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Will the block be lifted eventually?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					Possibly, but there is no timeline. Past blocks on developer platforms in India have lasted anywhere from days to months. Even if lifted, history shows blocks can return. A proxy layer protects you regardless of the block status.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Is using a proxy to bypass ISP blocks legal in India?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					Using a reverse proxy for legitimate API routing is a standard infrastructure practice. It is how CDNs, load balancers, and API gateways work. You are routing traffic through your own domain on Cloudflare's edge network, which is a normal architectural pattern.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">Should I add a proxy even if my users are not in India?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					If you have any Indian users or plan to expand there, yes. India has the largest connected mobile population, and DNS blocks on developer tools are a recurring pattern. A proxy layer is a small investment that provides resilience against future disruptions.
+				</div>
+			</details>
+
+			<details class="group glass-card rounded-xl">
+				<summary class="flex cursor-pointer items-center justify-between p-5 text-white">
+					<span class="font-medium">How do I set up a proxy quickly?</span>
+					<svg class="h-4 w-4 shrink-0 text-gray-500 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+				</summary>
+				<div class="px-5 pb-5 text-sm leading-relaxed text-gray-400">
+					You have two options: Use our free <a href="/tools/worker-generator" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">Worker Generator Tool</a> to self-deploy a Cloudflare Worker in under 10 minutes, or sign up for <a href="/register" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">JioBase</a> for a managed proxy with one-click setup, WebSocket support, and analytics.
+				</div>
+			</details>
+		</div>
+	</section>
+
+
 	<!-- ===== 10. CTA ===== -->
 	<section class="mt-16 mb-8">
 		<div class="glass-card rounded-2xl p-8 text-center sm:p-12">
