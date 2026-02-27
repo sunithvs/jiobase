@@ -221,7 +221,7 @@ export default {
 								<div class="flex items-start gap-2">
 									<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
 									<p class="text-sm text-gray-400">
-										Cloudflare Workers free tier includes <strong class="text-gray-200">100,000 requests per day</strong> — more than enough for most projects.
+										Cloudflare Workers free tier includes <strong class="text-gray-200">100,000 requests per day</strong> - more than enough for most projects.
 									</p>
 								</div>
 							</div>
@@ -534,7 +534,7 @@ export default {
 						Want a managed proxy instead?
 					</h2>
 					<p class="mx-auto mt-3 max-w-lg text-gray-400">
-						Skip the setup. JioBase gives you WebSocket support, analytics, rate limiting, and a dashboard — all for free.
+						Skip the setup. JioBase gives you WebSocket support, analytics, rate limiting, and a dashboard - all for free.
 					</p>
 					<div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
 						<a

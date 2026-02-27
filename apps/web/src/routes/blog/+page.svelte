@@ -59,5 +59,50 @@
 				DNS blocks are not new in India. From Medium to GitHub to Supabase, ISP-level blocks keep breaking developer tools. Here's why a proxy layer isn't just a workaround - it's essential infrastructure.
 			</p>
 		</a>
+
+		<!-- Blog 4 -->
+		<a href="/blog/firebase-supabase-blocked-india" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-red-500/20 bg-red-500/5 px-2.5 py-0.5 text-xs font-medium text-red-400">Breaking</span>
+				<time>February 28, 2026</time>
+				<span>7 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				Firebase AND Supabase Blocked in India: The Double Backend Crisis
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				Firebase blocked on BSNL. Supabase blocked on Jio, Airtel, and ACT. Indian developers are running out of backends that work. Here's what happened and the one fix that works for both.
+			</p>
+		</a>
+
+		<!-- Blog 5 -->
+		<a href="/blog/test-if-backend-blocked-india" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-blue-400/20 bg-blue-400/5 px-2.5 py-0.5 text-xs font-medium text-blue-400">Guide</span>
+				<time>February 28, 2026</time>
+				<span>5 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				How to Test if Your Backend is Blocked by Indian ISPs
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				Step-by-step diagnostic guide to check if Supabase, Firebase, or any backend API is being DNS-blocked by your ISP. Includes terminal commands, browser scripts, and online tools.
+			</p>
+		</a>
+
+		<!-- Blog 6 -->
+		<a href="/blog/supabase-alternatives-india" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-purple-400/20 bg-purple-400/5 px-2.5 py-0.5 text-xs font-medium text-purple-400">Comparison</span>
+				<time>February 28, 2026</time>
+				<span>8 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				Supabase Alternatives for Indian Developers (2026 Comparison)
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				Evaluating Appwrite, Nhost, PocketBase, self-hosting, and custom backends as Supabase alternatives in India. Spoiler: switching backends does not fix the ISP block problem.
+			</p>
+		</a>
 	</div>
 </div>

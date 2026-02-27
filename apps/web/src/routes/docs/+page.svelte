@@ -498,7 +498,7 @@
 			<section id="self-host">
 				<h2 class="text-2xl font-bold tracking-tight text-white">Self-host your own proxy</h2>
 				<p class="mt-4 leading-relaxed text-gray-300">
-					Prefer full control? You can deploy your own Supabase proxy on Cloudflare Workers for free. Our generator tool creates a ready-to-deploy worker script — just enter your Supabase URL and follow the step-by-step guide.
+					Prefer full control? You can deploy your own Supabase proxy on Cloudflare Workers for free. Our generator tool creates a ready-to-deploy worker script - just enter your Supabase URL and follow the step-by-step guide.
 				</p>
 
 				<div class="mt-6 rounded-xl border border-brand-400/20 bg-brand-400/5 p-6">
