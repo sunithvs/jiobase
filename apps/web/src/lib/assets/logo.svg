@@ -4,38 +4,43 @@
       <stop offset="0%" stop-color="#111111"/>
       <stop offset="100%" stop-color="#0a0a0a"/>
     </linearGradient>
-    <linearGradient id="boltGrad" x1="52" y1="24" x2="76" y2="104" gradientUnits="userSpaceOnUse">
+    <linearGradient id="shieldGrad" x1="44" y1="22" x2="84" y2="110" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#5eead4"/>
       <stop offset="50%" stop-color="#3ecf8e"/>
       <stop offset="100%" stop-color="#22a965"/>
     </linearGradient>
-    <linearGradient id="ringGrad" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#3ecf8e" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#3ecf8e" stop-opacity="0.1"/>
+    <linearGradient id="arrowGrad" x1="38" y1="64" x2="90" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffffff"/>
     </linearGradient>
     <filter id="glow">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
     </filter>
   </defs>
 
   <!-- Background rounded square -->
   <rect width="128" height="128" rx="28" fill="url(#bgGrad)"/>
 
-  <!-- Outer ring (proxy/routing) -->
-  <circle cx="64" cy="64" r="46" fill="none" stroke="url(#ringGrad)" stroke-width="2.5"/>
+  <!-- Subtle radial glow behind shield -->
+  <circle cx="64" cy="60" r="40" fill="#3ecf8e" opacity="0.06"/>
 
-  <!-- Dotted orbit paths (data routing) -->
-  <circle cx="64" cy="64" r="38" fill="none" stroke="#3ecf8e" stroke-width="0.75" stroke-opacity="0.15" stroke-dasharray="4 6"/>
+  <!-- Shield shape (protection) -->
+  <path d="M64 18 L96 34 L96 62 C96 82 82 98 64 108 C46 98 32 82 32 62 L32 34 Z"
+        fill="url(#shieldGrad)" opacity="0.15"/>
+  <path d="M64 18 L96 34 L96 62 C96 82 82 98 64 108 C46 98 32 82 32 62 L32 34 Z"
+        fill="none" stroke="url(#shieldGrad)" stroke-width="2.5"/>
 
-  <!-- Glow behind bolt -->
-  <path d="M70 28L46 66H60L54 100L80 60H66L70 28Z" fill="#3ecf8e" opacity="0.2" filter="url(#glow)"/>
+  <!-- Inner shield outline -->
+  <path d="M64 28 L88 40 L88 60 C88 76 77 89 64 97 C51 89 40 76 40 60 L40 40 Z"
+        fill="none" stroke="#3ecf8e" stroke-width="1" stroke-opacity="0.2"/>
 
-  <!-- Lightning bolt (speed) -->
-  <path d="M70 28L46 66H60L54 100L80 60H66L70 28Z" fill="url(#boltGrad)"/>
+  <!-- Forward routing arrow (traffic flow) -->
+  <g filter="url(#glow)">
+    <path d="M46 64 L72 64 L65 52 L86 64 L65 76 L72 64" fill="#3ecf8e" opacity="0.3"/>
+  </g>
+  <path d="M46 64 L72 64 L65 52 L86 64 L65 76 L72 64" fill="url(#arrowGrad)"/>
 
-  <!-- Small data dots on the orbit -->
-  <circle cx="28" cy="48" r="2.5" fill="#3ecf8e" opacity="0.5"/>
-  <circle cx="100" cy="80" r="2.5" fill="#3ecf8e" opacity="0.5"/>
-  <circle cx="48" cy="102" r="2" fill="#3ecf8e" opacity="0.3"/>
-  <circle cx="88" cy="26" r="2" fill="#3ecf8e" opacity="0.3"/>
+  <!-- Small routing dots -->
+  <circle cx="38" cy="64" r="2" fill="#3ecf8e" opacity="0.5"/>
+  <circle cx="42" cy="64" r="1.5" fill="#3ecf8e" opacity="0.3"/>
 </svg>

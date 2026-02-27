@@ -40,8 +40,8 @@
 			<a href="/" class="inline-flex items-center gap-2">
 				<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-400/10">
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="12" cy="12" r="10.5" stroke="#3ecf8e" stroke-width="1.5" stroke-opacity="0.4"/>
-						<path d="M13.5 3.5L7.5 12.5H11L9.5 20.5L16.5 11H13L13.5 3.5Z" fill="#3ecf8e"/>
+						<path d="M12 2L20 6.5V12C20 17 16.5 21 12 23C7.5 21 4 17 4 12V6.5L12 2Z" fill="none" stroke="#3ecf8e" stroke-width="1.5"/>
+						<path d="M9 12.5L14 12.5L12.5 10L16 12.5L12.5 15L14 12.5" fill="#3ecf8e"/>
 					</svg>
 				</div>
 				<span class="text-xl font-bold text-white">JioBase</span>
