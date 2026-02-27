@@ -17,12 +17,13 @@ const ALLOWED_ORIGINS = [
 
 app.use('/api/*', cors({
   origin: (origin) => {
-    // Reject requests with no Origin header in production (prevents certain CSRF vectors)
-    if (!origin) return null as any;
+    // No Origin header = non-browser request (cURL, server-to-server)
+    // Return first allowed origin so CORS headers are still set
+    if (!origin) return ALLOWED_ORIGINS[0];
     if (ALLOWED_ORIGINS.includes(origin)) return origin;
     // Allow *.pages.dev preview deploys
     if (origin.endsWith('.jiobase-web.pages.dev')) return origin;
-    return null as any;
+    return ALLOWED_ORIGINS[0];
   },
   credentials: true,
   allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
