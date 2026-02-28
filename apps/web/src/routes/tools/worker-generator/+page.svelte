@@ -106,6 +106,29 @@ export default {
 	<meta property="og:description" content="Generate a Cloudflare Worker script to proxy your Supabase traffic and bypass ISP DNS blocks in India." />
 	<meta property="og:type" content="website" />
 	<link rel="canonical" href="https://jiobase.com/tools/worker-generator" />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "WebApplication",
+				"name": "Supabase Proxy Worker Generator",
+				"description": "Generate a ready-to-deploy Cloudflare Worker script that proxies your Supabase traffic. Bypass DNS blocks on Jio, Airtel and ACT Fibernet in India.",
+				"url": "https://jiobase.com/tools/worker-generator",
+				"applicationCategory": "DeveloperApplication",
+				"operatingSystem": "Web",
+				"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+				"publisher": { "@id": "https://jiobase.com/#organization" }
+			},
+			{
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jiobase.com" },
+					{ "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://jiobase.com/tools" },
+					{ "@type": "ListItem", "position": 3, "name": "Worker Generator" }
+				]
+			}
+		]
+	})}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-[#0a0a0a] text-white">

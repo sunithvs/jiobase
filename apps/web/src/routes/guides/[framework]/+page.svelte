@@ -27,6 +27,32 @@
 	<meta name="twitter:title" content={guide.metaTitle} />
 	<meta name="twitter:description" content={guide.metaDescription} />
 	<link rel="canonical" href="https://jiobase.com/guides/{guide.slug}" />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "HowTo",
+				"name": `Fix Supabase in ${guide.name} for Indian Users`,
+				"description": guide.metaDescription,
+				"url": `https://jiobase.com/guides/${guide.slug}`,
+				"step": [
+					{ "@type": "HowToStep", "name": "Install dependencies", "text": `Set up your ${guide.name} project with Supabase client library.` },
+					{ "@type": "HowToStep", "name": "Sign up for JioBase", "text": "Create a free account at jiobase.com and add your Supabase project." },
+					{ "@type": "HowToStep", "name": "Update environment variable", "text": "Replace your SUPABASE_URL with the JioBase proxy URL in your environment config." },
+					{ "@type": "HowToStep", "name": "Deploy and verify", "text": "Redeploy your application and verify Supabase calls work on Indian networks." }
+				],
+				"publisher": { "@id": "https://jiobase.com/#organization" }
+			},
+			{
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jiobase.com" },
+					{ "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://jiobase.com/guides" },
+					{ "@type": "ListItem", "position": 3, "name": guide.name }
+				]
+			}
+		]
+	})}</script>`}
 </svelte:head>
 
 <article class="mx-auto max-w-3xl px-6 py-16 md:py-24">

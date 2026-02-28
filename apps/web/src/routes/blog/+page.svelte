@@ -1,6 +1,25 @@
 <svelte:head>
 	<title>Blog - JioBase</title>
 	<meta name="description" content="Technical guides, tutorials, and insights about bypassing Supabase DNS blocks in India using Cloudflare Workers." />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "CollectionPage",
+				"name": "Blog - JioBase",
+				"description": "Technical guides, tutorials, and insights about bypassing Supabase DNS blocks in India using Cloudflare Workers.",
+				"url": "https://jiobase.com/blog",
+				"publisher": { "@id": "https://jiobase.com/#organization" }
+			},
+			{
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jiobase.com" },
+					{ "@type": "ListItem", "position": 2, "name": "Blog" }
+				]
+			}
+		]
+	})}</script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-4xl px-6 py-16">
@@ -147,6 +166,108 @@
 			</h2>
 			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
 				Understanding the legal framework behind India's Supabase block. What Section 69A of the IT Act is, how blocking orders work, and what developers can do.
+			</p>
+		</a>
+		<!-- Blog 10 -->
+		<a href="/blog/supabase-india-block-timeline" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-blue-400/20 bg-blue-400/5 px-2.5 py-0.5 text-xs font-medium text-blue-400">Timeline</span>
+				<time>February 28, 2026</time>
+				<span>7 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				Supabase India: Complete Timeline of the Block (Feb 2026)
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				A day-by-day timeline of the Supabase block in India. From the government order on Feb 24 to community workarounds on Feb 28, here is everything that happened.
+			</p>
+		</a>
+
+		<!-- Blog 11 -->
+		<a href="/blog/supabase-production-app-broken-india" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-red-500/20 bg-red-500/5 px-2.5 py-0.5 text-xs font-medium text-red-400">Emergency</span>
+				<time>February 28, 2026</time>
+				<span>6 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				Your Production App Just Broke: Emergency Guide for Supabase Block in India
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				Your Supabase-powered app stopped working for Indian users. Emergency triage guide with quick diagnosis, what NOT to do, and a 15-minute fix with code examples.
+			</p>
+		</a>
+
+		<!-- Blog 12 -->
+		<a href="/blog/india-blocking-developer-tools-history" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-purple-400/20 bg-purple-400/5 px-2.5 py-0.5 text-xs font-medium text-purple-400">Deep Dive</span>
+				<time>February 28, 2026</time>
+				<span>8 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				India's History of Blocking Developer Tools: From GitHub to Supabase
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				From GitHub in 2014 to Supabase in 2026, India has a long history of blocking platforms developers depend on. Here is the full timeline and what you can do about it.
+			</p>
+		</a>
+
+		<!-- Blog 13 -->
+		<a href="/blog/dns-poisoning-supabase-india-explained" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-blue-400/20 bg-blue-400/5 px-2.5 py-0.5 text-xs font-medium text-blue-400">Technical</span>
+				<time>February 28, 2026</time>
+				<span>10 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				DNS Poisoning Explained: How Indian ISPs Block Supabase
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				A technical deep dive into how Indian ISPs use DNS poisoning and SNI inspection to block Supabase, and why a reverse proxy is the only reliable fix.
+			</p>
+		</a>
+		<!-- Blog 14 -->
+		<a href="/blog/supabase-vs-firebase-both-blocked-india" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-purple-400/20 bg-purple-400/5 px-2.5 py-0.5 text-xs font-medium text-purple-400">Comparison</span>
+				<time>February 28, 2026</time>
+				<span>7 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				Supabase vs Firebase in India: Both Blocked, One Solution
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				Both major BaaS platforms now face ISP blocks in India. Compare the blocks, understand why switching backends does not help, and learn the one architecture fix that works for both.
+			</p>
+		</a>
+		<!-- Blog 15 -->
+		<a href="/blog/india-disrupts-supabase-blocking-order" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-blue-400/20 bg-blue-400/5 px-2.5 py-0.5 text-xs font-medium text-blue-400">News</span>
+				<time>February 28, 2026</time>
+				<span>6 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				India Disrupts Access to Supabase with Government Blocking Order
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				A government blocking order under Section 69A of the IT Act has disrupted access to Supabase across India's largest ISPs. Full news coverage, timeline, and the one fix that works.
+			</p>
+		</a>
+
+		<!-- Blog 16 -->
+		<a href="/blog/supabase-network-connectivity-problems-india" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-amber-400/20 bg-amber-400/5 px-2.5 py-0.5 text-xs font-medium text-amber-400">Troubleshooting</span>
+				<time>February 28, 2026</time>
+				<span>7 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				Supabase Network Connectivity Problems in India: Causes, Diagnosis, and Fix
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				Users experiencing network connectivity problems with Supabase in the India region? It is not a Supabase outage. Indian ISPs are DNS-blocking *.supabase.co. Full diagnosis and fix guide.
 			</p>
 		</a>
 	</div>

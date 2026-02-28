@@ -5,6 +5,26 @@
 <svelte:head>
 	<title>Documentation - JioBase</title>
 	<meta name="description" content="Learn how to set up JioBase to proxy your Supabase traffic through Cloudflare's edge network and bypass ISP DNS blocks in India." />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "TechArticle",
+				"headline": "Getting Started with JioBase",
+				"description": "Learn how to set up JioBase to proxy your Supabase traffic through Cloudflare's edge network and bypass ISP DNS blocks in India.",
+				"url": "https://jiobase.com/docs",
+				"author": { "@type": "Person", "name": "Sunith VS", "url": "https://sunithvs.com" },
+				"publisher": { "@id": "https://jiobase.com/#organization" }
+			},
+			{
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jiobase.com" },
+					{ "@type": "ListItem", "position": 2, "name": "Documentation" }
+				]
+			}
+		]
+	})}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-[#0a0a0a]">

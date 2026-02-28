@@ -5,6 +5,47 @@
 <svelte:head>
 	<title>JioBase - Fix Supabase Blocked in India | Bypass Jio, Airtel DNS Block</title>
 	<meta name="description" content="Supabase blocked on Jio, Airtel, ACT Fibernet? JioBase is a managed Cloudflare proxy that routes your Supabase traffic through an unblocked domain. One-line fix, no VPN needed." />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "Organization",
+				"@id": "https://jiobase.com/#organization",
+				"name": "JioBase",
+				"url": "https://jiobase.com",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https://jiobase.com/favicon.svg"
+				},
+				"sameAs": [
+					"https://x.com/sunithvs_",
+					"https://www.linkedin.com/in/sunithvs/",
+					"https://www.youtube.com/@truevibecoder"
+				]
+			},
+			{
+				"@type": "WebSite",
+				"@id": "https://jiobase.com/#website",
+				"url": "https://jiobase.com",
+				"name": "JioBase",
+				"publisher": { "@id": "https://jiobase.com/#organization" }
+			},
+			{
+				"@type": "SoftwareApplication",
+				"name": "JioBase",
+				"applicationCategory": "DeveloperApplication",
+				"operatingSystem": "Web",
+				"description": "Managed Cloudflare reverse proxy that routes Supabase API traffic through an unblocked domain, bypassing ISP-level DNS blocks in India.",
+				"url": "https://jiobase.com",
+				"offers": {
+					"@type": "Offer",
+					"price": "0",
+					"priceCurrency": "USD"
+				},
+				"publisher": { "@id": "https://jiobase.com/#organization" }
+			}
+		]
+	})}</script>`}
 </svelte:head>
 
 <div class="min-h-screen bg-[#0a0a0a] text-white">

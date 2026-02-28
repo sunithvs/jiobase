@@ -56,6 +56,25 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Is Supabase Blocked in India? Live ISP Status" />
 	<meta name="twitter:description" content="Check the current status of Supabase and Firebase blocking across Indian ISPs. Updated February 2026." />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "WebPage",
+				"name": "Is Supabase Blocked in India? Live ISP Status",
+				"description": "Check the current status of Supabase and Firebase blocking across Indian ISPs. Updated February 2026.",
+				"url": "https://jiobase.com/india-status",
+				"publisher": { "@id": "https://jiobase.com/#organization" }
+			},
+			{
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jiobase.com" },
+					{ "@type": "ListItem", "position": 2, "name": "India Status" }
+				]
+			}
+		]
+	})}</script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-5xl px-6 py-16 md:py-24">

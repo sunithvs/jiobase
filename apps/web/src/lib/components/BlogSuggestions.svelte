@@ -80,6 +80,62 @@
 			badge: 'Explainer',
 			badgeColor: 'purple',
 			readTime: '6 min'
+		},
+		{
+			slug: 'supabase-india-block-timeline',
+			title: 'Supabase India: Complete Timeline of the Block (Feb 2026)',
+			description: 'A day-by-day timeline of the Supabase block in India, from the government order to community workarounds.',
+			badge: 'Timeline',
+			badgeColor: 'blue',
+			readTime: '7 min'
+		},
+		{
+			slug: 'supabase-production-app-broken-india',
+			title: 'Your Production App Just Broke: Emergency Guide for Supabase Block in India',
+			description: 'Emergency triage guide with quick diagnosis, what NOT to do, and a 15-minute fix with code examples.',
+			badge: 'Emergency',
+			badgeColor: 'red',
+			readTime: '6 min'
+		},
+		{
+			slug: 'india-blocking-developer-tools-history',
+			title: "India's History of Blocking Developer Tools: From GitHub to Supabase",
+			description: 'From GitHub in 2014 to Supabase in 2026, the full history of ISP-level blocks affecting developers in India.',
+			badge: 'Deep Dive',
+			badgeColor: 'purple',
+			readTime: '8 min'
+		},
+		{
+			slug: 'dns-poisoning-supabase-india-explained',
+			title: 'DNS Poisoning Explained: How Indian ISPs Block Supabase',
+			description: 'A technical deep dive into DNS poisoning, sinkhole IPs, SNI inspection, and why a reverse proxy is the only reliable fix.',
+			badge: 'Technical',
+			badgeColor: 'blue',
+			readTime: '10 min'
+		},
+		{
+			slug: 'supabase-vs-firebase-both-blocked-india',
+			title: 'Supabase vs Firebase in India: Both Blocked, One Solution',
+			description: 'Both major BaaS platforms face ISP blocks in India. Compare the blocks, why switching does not help, and the one fix.',
+			badge: 'Comparison',
+			badgeColor: 'purple',
+			readTime: '7 min'
+		},
+		{
+			slug: 'india-disrupts-supabase-blocking-order',
+			title: 'India Disrupts Access to Supabase with Government Blocking Order',
+			description: 'A government blocking order under Section 69A has disrupted Supabase access across India. Full news coverage and analysis.',
+			badge: 'News',
+			badgeColor: 'blue',
+			readTime: '6 min'
+		},
+		{
+			slug: 'supabase-network-connectivity-problems-india',
+			title: 'Supabase Network Connectivity Problems in India: Causes, Diagnosis, and Fix',
+			description: 'Users experiencing network connectivity problems with Supabase in India? It is not a Supabase outage. Full diagnosis and fix guide.',
+			badge: 'Troubleshooting',
+			badgeColor: 'amber',
+			readTime: '7 min'
 		}
 	];
 

@@ -41,6 +41,32 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={page.metaTitle} />
 	<meta name="twitter:description" content={page.metaDescription} />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "HowTo",
+				"name": page.metaTitle,
+				"description": page.metaDescription,
+				"url": `https://jiobase.com/fix/${page.slug}`,
+				"step": [
+					{ "@type": "HowToStep", "name": "Sign up for JioBase", "text": "Create a free account at jiobase.com to get your proxy URL." },
+					{ "@type": "HowToStep", "name": "Get your proxy URL", "text": "After registration, add your Supabase project to get a unique proxy URL." },
+					{ "@type": "HowToStep", "name": "Replace Supabase URL", "text": "Swap your SUPABASE_URL environment variable with the JioBase proxy URL." },
+					{ "@type": "HowToStep", "name": "Deploy", "text": "Redeploy your application. All Supabase traffic now routes through Cloudflare, bypassing ISP blocks." }
+				],
+				"publisher": { "@id": "https://jiobase.com/#organization" }
+			},
+			{
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jiobase.com" },
+					{ "@type": "ListItem", "position": 2, "name": "Fix", "item": "https://jiobase.com/fix" },
+					{ "@type": "ListItem", "position": 3, "name": getPageLabel() }
+				]
+			}
+		]
+	})}</script>`}
 </svelte:head>
 
 <article class="mx-auto max-w-3xl px-6 py-16 md:py-24">
