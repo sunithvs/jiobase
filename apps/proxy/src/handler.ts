@@ -52,13 +52,25 @@ export async function handleHttpProxy(
   // Clone response headers
   const responseHeaders = new Headers(upstreamResponse.headers);
 
-  // Rewrite supabase.co URLs in Location headers (redirects)
+  // Rewrite Location headers that redirect directly to the Supabase host.
+  // Only rewrite the *host* portion of the URL — NOT query params.
+  // This avoids breaking OAuth redirect_uri params (e.g. Google's redirect_uri
+  // must match exactly between the authorize request and the token exchange).
   const location = responseHeaders.get('Location');
-  if (location && location.includes('.supabase.co')) {
-    responseHeaders.set(
-      'Location',
-      location.replace(new URL(config.supabaseUrl).hostname, url.hostname)
-    );
+  if (location) {
+    try {
+      const locUrl = new URL(location);
+      const supabaseHost = new URL(config.supabaseUrl).hostname;
+      if (locUrl.hostname === supabaseHost) {
+        // Direct redirect to Supabase — rewrite host to proxy
+        locUrl.hostname = url.hostname;
+        responseHeaders.set('Location', locUrl.toString());
+      }
+      // If Location points to an external host (e.g. accounts.google.com),
+      // leave it untouched — including any redirect_uri query params.
+    } catch {
+      // Malformed Location header — leave it as-is
+    }
   }
 
   // Add CORS headers

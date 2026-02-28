@@ -9,12 +9,17 @@ export async function handleWebSocket(
   upstreamUrl.pathname = url.pathname;
   upstreamUrl.search = url.search;
 
-  // Build upstream WebSocket URL
-  const wsUrl = upstreamUrl.toString().replace('https:', 'wss:').replace('http:', 'ws:');
+  // Cloudflare Workers fetch() requires https:// (not wss://) for WebSocket upgrade.
+  // The Upgrade header tells the upstream to switch protocols.
+  const headers = new Headers(request.headers);
+  headers.set('Host', upstreamUrl.hostname);
+  headers.delete('cf-connecting-ip');
+  headers.delete('cf-ray');
+  headers.delete('cf-visitor');
+  headers.delete('cf-ipcountry');
 
-  // Create upstream WebSocket connection
-  const upstreamResp = await fetch(wsUrl, {
-    headers: request.headers,
+  const upstreamResp = await fetch(upstreamUrl.toString(), {
+    headers,
   });
 
   const upstreamWs = upstreamResp.webSocket;
