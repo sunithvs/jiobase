@@ -1,5 +1,20 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import DonationModal from '$lib/components/DonationModal.svelte';
+
+	let showDonation = $state(false);
+
+	onMount(() => {
+		const timeout = setTimeout(() => {
+			if (!sessionStorage.getItem('jb_landing_modal_shown')) {
+				showDonation = true;
+				sessionStorage.setItem('jb_landing_modal_shown', '1');
+			}
+		}, 60_000);
+
+		return () => clearTimeout(timeout);
+	});
 </script>
 
 <svelte:head>
@@ -47,6 +62,8 @@
 		]
 	})}</script>`}
 </svelte:head>
+
+<DonationModal bind:open={showDonation} variant="periodic" />
 
 <div class="min-h-screen bg-[#0a0a0a] text-white">
 
@@ -411,16 +428,23 @@
 	<section id="pricing" class="py-24 md:py-32">
 		<div class="mx-auto max-w-3xl px-6">
 			<div class="text-center">
-				<p class="text-sm font-semibold uppercase tracking-wider text-brand-400">Free & Open Source</p>
+				<p class="text-sm font-semibold uppercase tracking-wider text-amber-400">Built by one dev. Funded by coffee.</p>
 				<h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-					100% free. For now.
+					100% free. Seriously.
 				</h2>
-				<p class="mx-auto mt-4 max-w-xl text-gray-400">
-					JioBase is a community project built to help Indian developers affected by the Supabase DNS block. Everything is free for the time being - no limits, no paid tiers.
+			</div>
+
+			<!-- Personal story card -->
+			<div class="mt-10 rounded-2xl border border-amber-400/10 bg-amber-400/5 p-6 sm:p-8">
+				<p class="text-sm leading-relaxed text-gray-300">
+					I'm <span class="font-semibold text-white">Sunith</span>, an indie developer from India. I built JioBase because the Supabase block broke my own production app — and I knew thousands of other devs were stuck too.
+				</p>
+				<p class="mt-3 text-sm leading-relaxed text-gray-400">
+					It's free because I think fixing infrastructure shouldn't cost you anything. But running this isn't free for me — <span class="text-amber-300 font-medium">every proxied request costs real money on Cloudflare</span>. If JioBase saved your app, a $3 coffee genuinely helps keep the lights on.
 				</p>
 			</div>
 
-			<div class="mt-12 glass-card rounded-2xl p-8 text-center">
+			<div class="mt-8 glass-card rounded-2xl p-8 text-center">
 				<ul class="mx-auto max-w-sm space-y-4 text-left text-sm text-gray-300">
 					<li class="flex items-start gap-3">
 						<svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -452,7 +476,7 @@
 						href="https://buymeacoffee.com/sunithvs"
 						target="_blank"
 						rel="noopener"
-						class="group flex items-center gap-2 rounded-xl border border-amber-400/20 bg-amber-400/5 px-6 py-3 text-sm font-medium text-amber-300 transition hover:border-amber-400/30 hover:bg-amber-400/10"
+						class="flex items-center gap-2 rounded-xl bg-amber-400 px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300"
 					>
 						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
@@ -462,7 +486,7 @@
 				</div>
 
 				<p class="mt-6 text-xs text-gray-500">
-					Running on Cloudflare Workers costs money. If JioBase saves you time, consider supporting the project.
+					Every $3 coffee directly pays for Cloudflare Workers that keep your app online.
 				</p>
 			</div>
 		</div>

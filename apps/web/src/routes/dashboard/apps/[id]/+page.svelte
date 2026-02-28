@@ -4,11 +4,13 @@
 	import { goto } from '$app/navigation';
 	import { api, type AppRecord, ApiError } from '$lib/api.js';
 	import { JIOBASE_DOMAIN } from '@jiobase/shared';
+	import DonationModal from '$lib/components/DonationModal.svelte';
 
 	let app = $state<AppRecord | null>(null);
 	let loading = $state(true);
 	let error = $state('');
 	let copied = $state(false);
+	let showDonation = $state(false);
 
 	onMount(async () => {
 		try {
@@ -18,6 +20,13 @@
 			error = err instanceof ApiError ? err.message : 'Failed to load app';
 		} finally {
 			loading = false;
+		}
+
+		// Show celebration modal if user just created this app
+		if (localStorage.getItem('jb_just_created')) {
+			localStorage.removeItem('jb_just_created');
+			// Small delay so the page content loads first
+			setTimeout(() => (showDonation = true), 500);
 		}
 	});
 
@@ -58,6 +67,7 @@
 {:else if error}
 	<div class="rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</div>
 {:else if app}
+	<DonationModal bind:open={showDonation} variant="celebration" />
 	<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 		<div class="min-w-0">
 			<a href="/dashboard" class="text-sm text-gray-400 transition hover:text-brand-400">&larr; Back to apps</a>

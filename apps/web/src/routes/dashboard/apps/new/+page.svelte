@@ -46,6 +46,7 @@
 				slug,
 				supabaseUrl,
 			});
+			localStorage.setItem('jb_just_created', '1');
 			goto(`/dashboard/apps/${res.data.id}`);
 		} catch (err) {
 			if (err instanceof ApiError) {
