@@ -592,6 +592,8 @@
 					<a href="/" class="transition hover:text-gray-300">Home</a>
 					<a href="/docs" class="transition hover:text-gray-300">Docs</a>
 					<a href="/blog" class="transition hover:text-gray-300">Blog</a>
+					<a href="/terms" class="transition hover:text-gray-300">Terms</a>
+					<a href="/privacy" class="transition hover:text-gray-300">Privacy</a>
 				</div>
 				<p class="text-xs text-gray-600">&copy; {new Date().getFullYear()} JioBase. Built on Cloudflare.</p>
 			</div>

@@ -105,6 +105,15 @@
 			<p class="mt-1 text-xs text-gray-500">Find this in your Supabase project settings → API</p>
 		</div>
 
+		<p class="rounded-lg border border-white/5 bg-white/[0.02] px-4 py-3 text-xs leading-relaxed text-gray-500">
+			By creating an app, you confirm that your use complies with our
+			<a href="/terms" target="_blank" class="text-brand-400 hover:text-brand-300 underline transition">Terms of Service</a>
+			and
+			<a href="/terms#acceptable-use" target="_blank" class="text-brand-400 hover:text-brand-300 underline transition">Acceptable Use Policy</a>.
+			All proxied traffic is subject to our
+			<a href="/privacy" target="_blank" class="text-brand-400 hover:text-brand-300 underline transition">Privacy Policy</a>.
+		</p>
+
 		<div class="flex gap-3 pt-2">
 			<button
 				type="submit"

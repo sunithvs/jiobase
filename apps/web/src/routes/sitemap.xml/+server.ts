@@ -26,6 +26,8 @@ const staticPages = [
   { path: '/india-status', priority: '0.6', changefreq: 'weekly' },
   { path: '/login', priority: '0.3', changefreq: 'yearly' },
   { path: '/register', priority: '0.3', changefreq: 'yearly' },
+  { path: '/terms', priority: '0.3', changefreq: 'yearly' },
+  { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
 ];
 
 // Dynamically generate /fix/ and /guides/ pages from SEO data

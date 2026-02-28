@@ -8,6 +8,7 @@
 	let name = $state('');
 	let email = $state('');
 	let password = $state('');
+	let agreedToTerms = $state(false);
 	let error = $state('');
 	let submitting = $state(false);
 
@@ -94,10 +95,26 @@
 					<p class="mt-1.5 text-xs text-gray-500">Must be at least 8 characters</p>
 				</div>
 
+				<div class="flex items-start gap-3">
+					<input
+						id="terms"
+						type="checkbox"
+						bind:checked={agreedToTerms}
+						class="mt-0.5 h-4 w-4 rounded border-white/20 bg-white/5 text-brand-400 focus:ring-brand-400/50 focus:ring-offset-0"
+					/>
+					<label for="terms" class="text-xs leading-relaxed text-gray-400">
+						I have read and agree to the
+						<a href="/terms" target="_blank" class="text-brand-400 hover:text-brand-300 underline transition">Terms of Service</a>
+						and
+						<a href="/privacy" target="_blank" class="text-brand-400 hover:text-brand-300 underline transition">Privacy Policy</a>.
+						I understand that API traffic will be proxied through JioBase infrastructure.
+					</label>
+				</div>
+
 				<button
 					type="submit"
-					disabled={submitting}
-					class="w-full rounded-lg bg-brand-400 px-4 py-2.5 text-sm font-semibold text-black transition hover:bg-brand-300 focus:ring-2 focus:ring-brand-400/50 focus:ring-offset-2 focus:ring-offset-[#0a0a0a] focus:outline-none disabled:opacity-50"
+					disabled={submitting || !agreedToTerms}
+					class="w-full rounded-lg bg-brand-400 px-4 py-2.5 text-sm font-semibold text-black transition hover:bg-brand-300 focus:ring-2 focus:ring-brand-400/50 focus:ring-offset-2 focus:ring-offset-[#0a0a0a] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
 				>
 					{submitting ? 'Creating account...' : 'Create account'}
 				</button>

@@ -595,6 +595,8 @@
 					<a href="#features" class="text-sm text-gray-500 transition hover:text-gray-300">Features</a>
 					<a href="#pricing" class="text-sm text-gray-500 transition hover:text-gray-300">Pricing</a>
 					<a href="https://github.com/sunithvs/jiobase" target="_blank" rel="noopener" class="text-sm text-gray-500 transition hover:text-gray-300">GitHub</a>
+					<a href="/terms" class="text-sm text-gray-500 transition hover:text-gray-300">Terms</a>
+					<a href="/privacy" class="text-sm text-gray-500 transition hover:text-gray-300">Privacy</a>
 				</div>
 
 				<p class="text-xs text-gray-600">
