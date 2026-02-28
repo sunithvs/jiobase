@@ -1,3 +1,8 @@
+<script lang="ts">
+	import AuthorBio from '$lib/components/AuthorBio.svelte';
+	import BlogSuggestions from '$lib/components/BlogSuggestions.svelte';
+</script>
+
 <svelte:head>
 	<title>Firebase and Supabase Both Blocked in India: The Double Backend Crisis | JioBase</title>
 	<meta name="description" content="Both Firebase and Supabase are now blocked by Indian ISPs. Firebase on BSNL since Aug 2025, Supabase on Jio/Airtel/ACT since Feb 2026. Learn why migrating between them won't help and what actually works." />
@@ -509,14 +514,7 @@
 	</section>
 
 
-	<!-- Back to blog -->
-	<div class="mt-12 border-t border-white/5 pt-8">
-		<a href="/blog" class="group inline-flex items-center gap-2 text-sm text-gray-400 transition hover:text-brand-400">
-			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition group-hover:-translate-x-0.5">
-				<path d="M19 12H5M12 19l-7-7 7-7"/>
-			</svg>
-			Back to all posts
-		</a>
-	</div>
+	<AuthorBio />
 
+	<BlogSuggestions currentSlug="firebase-supabase-blocked-india" suggestedSlugs={["supabase-blocked-india-fix", "test-if-backend-blocked-india", "why-supabase-banned-india-section-69a"]} />
 </article>

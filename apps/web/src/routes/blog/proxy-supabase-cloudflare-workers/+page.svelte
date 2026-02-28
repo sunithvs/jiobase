@@ -1,3 +1,8 @@
+<script lang="ts">
+	import AuthorBio from '$lib/components/AuthorBio.svelte';
+	import BlogSuggestions from '$lib/components/BlogSuggestions.svelte';
+</script>
+
 <svelte:head>
 	<title>How to Proxy Supabase Through Cloudflare Workers (Step-by-Step) - JioBase</title>
 	<meta name="description" content="Step-by-step tutorial on building a Cloudflare Worker reverse proxy for Supabase. Covers HTTP proxying, WebSocket Realtime support, CORS, DNS configuration, and deployment." />
@@ -908,11 +913,7 @@
 	</section>
 
 
-	<!-- ===== Back to blog ===== -->
-	<div class="border-t border-white/5 pt-8 text-center">
-		<a href="/blog" class="text-sm text-brand-400 transition hover:text-brand-300">
-			&larr; Back to all articles
-		</a>
-	</div>
+	<AuthorBio />
 
+	<BlogSuggestions currentSlug="proxy-supabase-cloudflare-workers" suggestedSlugs={["supabase-blocked-india-fix", "fix-supabase-jio-5-minutes", "test-if-backend-blocked-india"]} />
 </article>

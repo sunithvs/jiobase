@@ -104,5 +104,50 @@
 				Evaluating Appwrite, Nhost, PocketBase, self-hosting, and custom backends as Supabase alternatives in India. Spoiler: switching backends does not fix the ISP block problem.
 			</p>
 		</a>
+
+		<!-- Blog 7 -->
+		<a href="/blog/fix-supabase-jio-5-minutes" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-brand-400/20 bg-brand-400/5 px-2.5 py-0.5 text-xs font-medium text-brand-400">Quick Fix</span>
+				<time>February 28, 2026</time>
+				<span>3 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				Fix Supabase on Jio in 5 Minutes
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				Ultra-short, action-focused guide. No theory, no backstory -- just the fix. Sign up, swap one URL, deploy. Done.
+			</p>
+		</a>
+
+		<!-- Blog 8 -->
+		<a href="/blog/supabase-err-connection-timed-out-india" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-amber-400/20 bg-amber-400/5 px-2.5 py-0.5 text-xs font-medium text-amber-400">Troubleshooting</span>
+				<time>February 28, 2026</time>
+				<span>5 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				Supabase ERR_CONNECTION_TIMED_OUT in India: What It Means and How to Fix It
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				Getting timeout errors with Supabase in India? Your ISP is blocking the connection. Full technical breakdown with diagnostic commands and the fix.
+			</p>
+		</a>
+
+		<!-- Blog 9 -->
+		<a href="/blog/why-supabase-banned-india-section-69a" class="group block glass-card rounded-2xl p-6 transition hover:border-white/10">
+			<div class="flex items-center gap-3 text-sm text-gray-500">
+				<span class="rounded-full border border-purple-400/20 bg-purple-400/5 px-2.5 py-0.5 text-xs font-medium text-purple-400">Explainer</span>
+				<time>February 28, 2026</time>
+				<span>6 min read</span>
+			</div>
+			<h2 class="mt-3 text-xl font-semibold group-hover:text-brand-400 transition">
+				Why Is Supabase Banned in India? Section 69A Explained
+			</h2>
+			<p class="mt-2 text-sm text-gray-400 leading-relaxed">
+				Understanding the legal framework behind India's Supabase block. What Section 69A of the IT Act is, how blocking orders work, and what developers can do.
+			</p>
+		</a>
 	</div>
 </div>

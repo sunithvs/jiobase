@@ -29,6 +29,8 @@
 		<!-- Desktop nav -->
 		<div class="hidden items-center gap-8 md:flex">
 			<a href="/#features" class="text-sm transition {active === 'features' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Features</a>
+			<a href="/fix/jio" class="text-sm transition {active === 'fix' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Fix</a>
+			<a href="/guides/nextjs" class="text-sm transition {active === 'guides' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Guides</a>
 			<a href="/docs" class="text-sm transition {active === 'docs' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Docs</a>
 			<a href="/blog" class="text-sm transition {active === 'blog' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Blog</a>
 			<a href="/tools/worker-generator" class="text-sm transition {active === 'tools' ? 'font-medium text-brand-400' : 'text-gray-400 hover:text-white'}">Tools</a>
@@ -64,6 +66,8 @@
 		<div class="border-t border-white/5 bg-[#0a0a0a] px-6 py-4 md:hidden">
 			<div class="flex flex-col gap-4">
 				<a href="/#features" class="text-sm text-gray-400">Features</a>
+				<a href="/fix/jio" class="text-sm text-gray-400">Fix</a>
+				<a href="/guides/nextjs" class="text-sm text-gray-400">Guides</a>
 				<a href="/docs" class="text-sm text-gray-400">Docs</a>
 				<a href="/blog" class="text-sm text-gray-400">Blog</a>
 				<a href="/tools/worker-generator" class="text-sm text-gray-400">Tools</a>

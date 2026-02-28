@@ -1,3 +1,8 @@
+<script lang="ts">
+	import AuthorBio from '$lib/components/AuthorBio.svelte';
+	import BlogSuggestions from '$lib/components/BlogSuggestions.svelte';
+</script>
+
 <svelte:head>
 	<title>Supabase Blocked in India: What Happened and How to Fix It | JioBase</title>
 	<meta name="description" content="Indian ISPs like Jio, Airtel, and ACT Fibernet are DNS-blocking *.supabase.co. Learn why changing DNS or using a VPN won't work and how to fix your app with a Cloudflare reverse proxy." />
@@ -565,14 +570,7 @@
 	</section>
 
 
-	<!-- Back to blog -->
-	<div class="mt-12 border-t border-white/5 pt-8">
-		<a href="/blog" class="group inline-flex items-center gap-2 text-sm text-gray-400 transition hover:text-brand-400">
-			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition group-hover:-translate-x-0.5">
-				<path d="M19 12H5M12 19l-7-7 7-7"/>
-			</svg>
-			Back to all posts
-		</a>
-	</div>
+	<AuthorBio />
 
+	<BlogSuggestions currentSlug="supabase-blocked-india-fix" suggestedSlugs={["proxy-supabase-cloudflare-workers", "firebase-supabase-blocked-india", "why-supabase-banned-india-section-69a"]} />
 </article>

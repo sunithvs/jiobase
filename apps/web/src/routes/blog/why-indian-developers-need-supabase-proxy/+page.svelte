@@ -1,3 +1,8 @@
+<script lang="ts">
+	import AuthorBio from '$lib/components/AuthorBio.svelte';
+	import BlogSuggestions from '$lib/components/BlogSuggestions.svelte';
+</script>
+
 <svelte:head>
 	<title>Why Every Indian Developer Using Supabase Needs a Reverse Proxy - JioBase Blog</title>
 	<meta name="description" content="DNS blocks are not new in India. From Medium to GitHub to Supabase, ISP-level blocks keep breaking developer tools. Here's why a proxy layer is essential infrastructure for Indian developers." />
@@ -488,12 +493,7 @@
 	</section>
 
 
-	<!-- ===== BACK TO BLOG ===== -->
-	<div class="mt-12 border-t border-white/5 pt-8">
-		<a href="/blog" class="flex items-center gap-2 text-sm text-gray-500 transition hover:text-brand-400">
-			<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-			Back to all posts
-		</a>
-	</div>
+	<AuthorBio />
 
+	<BlogSuggestions currentSlug="why-indian-developers-need-supabase-proxy" suggestedSlugs={["supabase-blocked-india-fix", "proxy-supabase-cloudflare-workers", "supabase-alternatives-india"]} />
 </article>
