@@ -602,6 +602,9 @@
 				<p class="text-xs text-gray-600">
 					&copy; {new Date().getFullYear()} JioBase. Built by <a href="https://sunithvs.com?utm_source=jiobase&utm_medium=footer&utm_campaign=website" target="_blank" rel="noopener" class="text-gray-500 hover:text-gray-300 transition">sunithvs</a>
 				</p>
+				<p class="mt-2 text-[10px] leading-relaxed text-gray-700">
+					JioBase is an independent open-source project. Not affiliated with Supabase Inc., Jio Platforms Ltd., Reliance Industries, or Cloudflare Inc.
+				</p>
 			</div>
 		</div>
 	</footer>
