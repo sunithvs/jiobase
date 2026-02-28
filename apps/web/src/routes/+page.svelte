@@ -15,7 +15,7 @@
 				"url": "https://jiobase.com",
 				"logo": {
 					"@type": "ImageObject",
-					"url": "https://jiobase.com/favicon.svg"
+					"url": "https://jiobase.com/favicon-192.png"
 				},
 				"sameAs": [
 					"https://x.com/sunithvs_",
