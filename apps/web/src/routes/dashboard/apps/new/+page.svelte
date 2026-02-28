@@ -9,6 +9,14 @@
 	let error = $state('');
 	let submitting = $state(false);
 	let slugManuallyEdited = $state(false);
+	let urlTouched = $state(false);
+
+	const supabaseUrlRegex = /^https:\/\/[a-z0-9]+\.supabase\.co$/;
+	let urlError = $derived(
+		urlTouched && supabaseUrl && !supabaseUrlRegex.test(supabaseUrl)
+			? 'Must be a valid Supabase URL (https://xxxxx.supabase.co)'
+			: ''
+	);
 
 	function generateSlug(name: string): string {
 		return name
@@ -41,7 +49,13 @@
 			goto(`/dashboard/apps/${res.data.id}`);
 		} catch (err) {
 			if (err instanceof ApiError) {
-				error = err.message;
+				const fieldErrors = err.body?.details?.fieldErrors;
+				if (fieldErrors) {
+					const messages = Object.values(fieldErrors).flat();
+					error = messages.length ? messages.join('. ') : err.message;
+				} else {
+					error = err.message;
+				}
 			} else {
 				error = 'Something went wrong. Please try again.';
 			}
@@ -98,11 +112,16 @@
 				id="supabaseUrl"
 				type="url"
 				bind:value={supabaseUrl}
+				onblur={() => (urlTouched = true)}
 				required
-				class="w-full rounded-lg border border-white/10 bg-surface-200 px-3 py-2.5 text-white placeholder-gray-500 focus:border-brand-400 focus:ring-1 focus:ring-brand-400 focus:outline-none"
+				class="w-full rounded-lg border {urlError ? 'border-red-500/50' : 'border-white/10'} bg-surface-200 px-3 py-2.5 text-white placeholder-gray-500 focus:border-brand-400 focus:ring-1 focus:ring-brand-400 focus:outline-none"
 				placeholder="https://abcdefg.supabase.co"
 			/>
-			<p class="mt-1 text-xs text-gray-500">Find this in your Supabase project settings → API</p>
+			{#if urlError}
+				<p class="mt-1 text-xs text-red-400">{urlError}</p>
+			{:else}
+				<p class="mt-1 text-xs text-gray-500">Find this in your Supabase project settings → API</p>
+			{/if}
 		</div>
 
 		<p class="rounded-lg border border-white/5 bg-white/[0.02] px-4 py-3 text-xs leading-relaxed text-gray-500">
