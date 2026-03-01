@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 	import { api, ApiError } from '$lib/api.js';
 	import { JIOBASE_DOMAIN } from '@jiobase/shared';
-	import DonationGate from '$lib/components/DonationGate.svelte';
 
 	let name = $state('');
 	let slug = $state('');
@@ -11,7 +10,6 @@
 	let submitting = $state(false);
 	let slugManuallyEdited = $state(false);
 	let urlTouched = $state(false);
-	let showDonationGate = $state(false);
 
 	const supabaseUrlRegex = /^https:\/\/[a-z0-9]+\.supabase\.co$/;
 	let urlError = $derived(
@@ -38,14 +36,9 @@
 		slugManuallyEdited = true;
 	}
 
-	function handleSubmit(e: Event) {
+	async function handleSubmit(e: Event) {
 		e.preventDefault();
 		error = '';
-		// Show donation gate before creating
-		showDonationGate = true;
-	}
-
-	async function createApp() {
 		submitting = true;
 		try {
 			const res = await api.apps.create({
@@ -72,8 +65,6 @@
 		}
 	}
 </script>
-
-<DonationGate bind:open={showDonationGate} onproceed={createApp} />
 
 <div class="mx-auto max-w-lg">
 	<h1 class="text-2xl font-bold text-white">Create New App</h1>
