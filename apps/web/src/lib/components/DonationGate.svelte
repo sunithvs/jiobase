@@ -6,46 +6,32 @@
 
 	let step = $state<'main' | 'skip-confirm'>('main');
 
-	function track(event: string) {
-		try {
-			(window as any).clarity?.('event', event);
-		} catch {}
-	}
-
 	function handleDonate() {
-		track(step === 'main' ? 'donation_gate_donated' : 'donation_gate_skip_reconverted');
 		window.open('https://buymeacoffee.com/sunithvs', '_blank');
 		onproceed();
 		open = false;
 	}
 
 	function handleAlreadyDonated() {
-		track('donation_gate_already_donated');
 		onproceed();
 		open = false;
 	}
 
 	function handleSkip() {
-		track('donation_gate_skip_clicked');
 		step = 'skip-confirm';
 	}
 
 	function handleSkipConfirm() {
-		track('donation_gate_skipped');
 		onproceed();
 		open = false;
 	}
 
 	function handleBackToMain() {
-		track('donation_gate_skip_go_back');
 		step = 'main';
 	}
 
 	$effect(() => {
-		if (open) {
-			step = 'main';
-			track('donation_gate_shown');
-		}
+		if (open) step = 'main';
 	});
 </script>
 
