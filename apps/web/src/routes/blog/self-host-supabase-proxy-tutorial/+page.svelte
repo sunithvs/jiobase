@@ -89,18 +89,6 @@
 		<p class="mb-4 leading-relaxed text-gray-300">
 			This downloads and runs the setup wizard. On first run, npm may ask to confirm the package install &mdash; type <code class="rounded bg-white/5 px-1.5 py-0.5 text-sm text-gray-300">y</code> and press enter.
 		</p>
-
-		<div class="rounded-xl border border-white/10 bg-surface-200/50 p-4">
-			<p class="text-sm text-gray-400">
-				<strong class="text-amber-400">Don't have Node.js?</strong> Use the shell installer instead:
-			</p>
-			<div class="mt-2 space-y-1 font-mono text-sm text-gray-300">
-				<div><span class="text-gray-500"># macOS / Linux</span></div>
-				<div>curl -fsSL https://jiobase.com/install | sh</div>
-				<div class="mt-2"><span class="text-gray-500"># Windows PowerShell</span></div>
-				<div>irm https://jiobase.com/install.ps1 | iex</div>
-			</div>
-		</div>
 	</section>
 
 

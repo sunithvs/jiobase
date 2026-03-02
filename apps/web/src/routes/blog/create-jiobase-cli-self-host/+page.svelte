@@ -53,11 +53,11 @@
 		</p>
 
 		<p class="mb-4 leading-relaxed text-gray-300">
-			But the generator had limitations: it produced a basic HTTP-only proxy. No WebSocket support meant Supabase Realtime was broken. No service filtering, no CORS configuration, and you had to manually paste code into Cloudflare's dashboard.
+			While the generator provided a great starting point for a basic HTTP proxy, we wanted to offer a more robust solution that fully unlocked Supabase's capabilities out-of-the-box without requiring manual copy-pasting.
 		</p>
 
 		<p class="leading-relaxed text-gray-300">
-			<code class="rounded bg-white/5 px-1.5 py-0.5 text-sm text-gray-300">create-jiobase</code> fixes all of that. It generates a production-quality worker with the same features as our managed proxy, walks you through configuration with an interactive wizard, and deploys it automatically.
+			<code class="rounded bg-white/5 px-1.5 py-0.5 text-sm text-gray-300">create-jiobase</code> is our next evolution. It generates a production-quality worker with full WebSocket support for Realtime, service filtering, and CORS configuration. Best of all, it walks you through setup with an interactive wizard and deploys everything automatically.
 		</p>
 	</section>
 
@@ -97,10 +97,10 @@
 
 	<!-- How to use it -->
 	<section class="mb-14">
-		<h2 class="mb-4 text-2xl font-bold tracking-tight">Three ways to install</h2>
+		<h2 class="mb-4 text-2xl font-bold tracking-tight">How to install</h2>
 
 		<p class="mb-6 leading-relaxed text-gray-300">
-			If you already have Node.js 18+, the fastest way is npx:
+			You'll need Node.js 18+. To get started, run the CLI:
 		</p>
 
 		<div class="code-block mb-6 rounded-xl p-4">
@@ -109,28 +109,8 @@
 			</code>
 		</div>
 
-		<p class="mb-4 leading-relaxed text-gray-300">
-			On macOS or Linux without Node.js, use the shell installer (it installs Node automatically via fnm):
-		</p>
-
-		<div class="code-block mb-6 rounded-xl p-4">
-			<code class="font-mono text-sm text-gray-200">
-				<span class="text-gray-500">$</span> curl -fsSL https://jiobase.com/install | sh
-			</code>
-		</div>
-
-		<p class="mb-4 leading-relaxed text-gray-300">
-			On Windows PowerShell:
-		</p>
-
-		<div class="code-block mb-6 rounded-xl p-4">
-			<code class="font-mono text-sm text-gray-200">
-				<span class="text-gray-500">PS&gt;</span> irm https://jiobase.com/install.ps1 | iex
-			</code>
-		</div>
-
 		<p class="leading-relaxed text-gray-300">
-			All three methods end up in the same interactive wizard. The shell installers just handle the Node.js prerequisite for you.
+			This command opens an interactive wizard that asks for your project details.
 		</p>
 	</section>
 

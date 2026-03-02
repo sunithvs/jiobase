@@ -461,7 +461,7 @@
 					<div class="space-y-3">
 						<div>
 							<p class="text-xs font-medium text-gray-400 mb-1.5">Ubuntu / Debian</p>
-							<div class="rounded-lg bg-white/[0.03] border border-white/[0.06] px-3 py-2">
+							<div class="rounded-lg bg-white/[0.03] border border-white/[0.06] px-3 py-2 overflow-x-auto">
 								<code class="text-xs text-brand-400 font-mono whitespace-nowrap">curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && sudo apt install -y nodejs</code>
 							</div>
 						</div>
@@ -472,8 +472,8 @@
 							</div>
 						</div>
 						<div>
-							<p class="text-xs font-medium text-gray-400 mb-1.5">Or use the shell installer</p>
-							<p class="text-xs text-gray-500">The <code class="text-gray-400">curl</code> install method auto-installs Node.js for you.</p>
+							<p class="text-xs font-medium text-gray-400 mb-1.5">Or download</p>
+							<a href="https://nodejs.org" target="_blank" rel="noopener" class="text-xs text-brand-400 hover:text-brand-300 transition">nodejs.org/en/download</a>
 						</div>
 					</div>
 				</div>
@@ -508,15 +508,10 @@
 				</div>
 			</div>
 
-			<div class="mt-8 text-center">
 				<p class="text-sm text-gray-500">
 					Verify your installation: <code class="rounded bg-white/[0.04] px-2 py-0.5 text-xs font-mono text-gray-300">node --version</code>
 					— you need v18.0.0 or higher.
 				</p>
-				<p class="mt-2 text-xs text-gray-600">
-					Prefer not to install Node.js? Use the <code class="text-gray-500">curl</code> or <code class="text-gray-500">PowerShell</code> install methods above — they handle everything automatically.
-				</p>
-			</div>
 		</div>
 	</section>
 
