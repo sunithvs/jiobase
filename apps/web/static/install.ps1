@@ -13,9 +13,9 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "  ╭──────────────────────────────────────╮" -ForegroundColor Cyan
-Write-Host "  │   🚀 JioBase Self-Host Installer     │" -ForegroundColor Cyan
-Write-Host "  ╰──────────────────────────────────────╯" -ForegroundColor Cyan
+Write-Host "  ========================================" -ForegroundColor Cyan
+Write-Host "    JioBase Self-Host Installer" -ForegroundColor Cyan
+Write-Host "  ========================================" -ForegroundColor Cyan
 Write-Host ""
 
 function Test-NodeVersion {
@@ -24,16 +24,16 @@ function Test-NodeVersion {
         $major = [int]($nodeVersion.Split('.')[0])
 
         if ($major -ge 18) {
-            Write-Host "  ✓ Node.js v$nodeVersion detected" -ForegroundColor Green
+            Write-Host "  [OK] Node.js v$nodeVersion detected" -ForegroundColor Green
             return $true
         }
         else {
-            Write-Host "  ! Node.js v$nodeVersion found, but v18+ is required" -ForegroundColor Yellow
+            Write-Host "  [!] Node.js v$nodeVersion found, but v18+ is required" -ForegroundColor Yellow
             return $false
         }
     }
     catch {
-        Write-Host "  ! Node.js not found" -ForegroundColor Yellow
+        Write-Host "  [!] Node.js not found" -ForegroundColor Yellow
         return $false
     }
 }
@@ -70,13 +70,31 @@ function Install-NodeViaFnm {
             winget install Schniz.fnm --accept-source-agreements --accept-package-agreements -h
         }
         else {
-            # Fallback: install fnm via PowerShell script
-            Write-Host "  Installing fnm..." -ForegroundColor DarkGray
+            # Fallback: download fnm binary directly (no bash dependency)
+            Write-Host "  Installing fnm (downloading binary)..." -ForegroundColor DarkGray
             try {
-                Invoke-WebRequest -Uri "https://fnm.vercel.app/install" -UseBasicParsing | Invoke-Expression
+                $fnmDir = Join-Path $env:LOCALAPPDATA "fnm"
+                $tempZip = Join-Path $env:TEMP "fnm-windows.zip"
+
+                if (-not (Test-Path $fnmDir)) {
+                    New-Item -ItemType Directory -Path $fnmDir -Force | Out-Null
+                }
+
+                Invoke-WebRequest -Uri "https://github.com/Schniz/fnm/releases/latest/download/fnm-windows.zip" -OutFile $tempZip -UseBasicParsing
+                Expand-Archive -Path $tempZip -DestinationPath $fnmDir -Force
+                Remove-Item $tempZip -Force
+
+                # Add to current session PATH
+                $env:PATH = "$fnmDir;$env:PATH"
+
+                # Persist to user PATH
+                $userPath = [System.Environment]::GetEnvironmentVariable("PATH", "User")
+                if ($userPath -notlike "*$fnmDir*") {
+                    [System.Environment]::SetEnvironmentVariable("PATH", "$fnmDir;$userPath", "User")
+                }
             }
             catch {
-                Write-Host "  ✗ Failed to install fnm" -ForegroundColor Red
+                Write-Host "  [X] Failed to install fnm" -ForegroundColor Red
                 Write-Host ""
                 Write-Host "  Please install Node.js manually:" -ForegroundColor White
                 Write-Host "  https://nodejs.org/en/download" -ForegroundColor Cyan
@@ -85,18 +103,20 @@ function Install-NodeViaFnm {
             }
         }
 
-        # Refresh PATH
-        $env:PATH = [System.Environment]::GetEnvironmentVariable("PATH", "User") + ";" + [System.Environment]::GetEnvironmentVariable("PATH", "Machine")
+        # Refresh PATH to pick up newly installed tools
+        $machinePath = [System.Environment]::GetEnvironmentVariable("PATH", "Machine")
+        $userPath = [System.Environment]::GetEnvironmentVariable("PATH", "User")
+        $env:PATH = "$machinePath;$userPath"
     }
 
     # Install and use Node.js 18
     try {
         fnm install 18
         fnm use 18
-        fnm env | ForEach-Object { Invoke-Expression $_ }
+        fnm env --shell powershell | ForEach-Object { Invoke-Expression $_ }
     }
     catch {
-        Write-Host "  ✗ Failed to install Node.js via fnm" -ForegroundColor Red
+        Write-Host "  [X] Failed to install Node.js via fnm" -ForegroundColor Red
         Write-Host ""
         Write-Host "  Please install Node.js manually:" -ForegroundColor White
         Write-Host "  https://nodejs.org/en/download" -ForegroundColor Cyan
@@ -107,10 +127,10 @@ function Install-NodeViaFnm {
     # Verify
     try {
         $newVersion = node -v
-        Write-Host "  ✓ Node.js $newVersion installed" -ForegroundColor Green
+        Write-Host "  [OK] Node.js $newVersion installed" -ForegroundColor Green
     }
     catch {
-        Write-Host "  ✗ Node.js installation failed" -ForegroundColor Red
+        Write-Host "  [X] Node.js installation failed" -ForegroundColor Red
         Write-Host ""
         Write-Host "  Please install Node.js manually:" -ForegroundColor White
         Write-Host "  https://nodejs.org/en/download" -ForegroundColor Cyan
@@ -125,7 +145,7 @@ function Test-Npx {
         return $true
     }
     catch {
-        Write-Host "  ✗ npx not found (should come with Node.js)" -ForegroundColor Red
+        Write-Host "  [X] npx not found (should come with Node.js)" -ForegroundColor Red
         Write-Host "  Try reinstalling Node.js from: https://nodejs.org" -ForegroundColor Cyan
         exit 1
     }
@@ -144,4 +164,4 @@ Write-Host ""
 Write-Host "  Running create-jiobase..." -ForegroundColor White
 Write-Host ""
 
-npx create-jiobase @args
+npx create-jiobase $args

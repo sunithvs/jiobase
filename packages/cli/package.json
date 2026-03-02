@@ -1,14 +1,15 @@
 {
   "name": "create-jiobase",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Deploy a production-quality Supabase proxy on Cloudflare Workers in under 2 minutes",
   "license": "AGPL-3.0-only",
   "type": "module",
   "bin": {
-    "create-jiobase": "dist/index.js"
+    "create-jiobase": "bin/create-jiobase.cjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --clean",

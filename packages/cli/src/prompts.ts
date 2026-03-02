@@ -3,9 +3,17 @@ import pc from 'picocolors';
 import path from 'node:path';
 import { normalizeSupabaseUrl, validateSupabaseUrl, validateWorkerName, validateOrigins } from './validation.js';
 
-/** Block writing to system-critical directories */
-const DANGEROUS_PREFIXES = ['/etc', '/usr', '/bin', '/sbin', '/var', '/boot', '/root', '/sys', '/proc', '/dev',
-  'C:\\Windows', 'C:\\Program Files', 'C:\\Program Files (x86)', 'C:\\System32'];
+/** Block writing to system-critical directories (uses env vars for Windows portability) */
+const DANGEROUS_PREFIXES = [
+  // Unix
+  '/etc', '/usr', '/bin', '/sbin', '/var', '/boot', '/root', '/sys', '/proc', '/dev',
+  // Windows (dynamic — works on any drive letter)
+  ...(process.platform === 'win32' ? [
+    process.env.SystemRoot || 'C:\\Windows',
+    process.env.ProgramFiles || 'C:\\Program Files',
+    process.env['ProgramFiles(x86)'] || 'C:\\Program Files (x86)',
+  ] : []),
+];
 
 type SupabaseService = 'rest' | 'auth' | 'storage' | 'realtime' | 'functions' | 'graphql';
 

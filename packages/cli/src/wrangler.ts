@@ -14,24 +14,47 @@ export async function isWranglerInstalled(): Promise<boolean> {
 }
 
 /**
+ * Checks if a message contains permission-related errors.
+ */
+function isPermissionError(message: string): boolean {
+  const lower = message.toLowerCase();
+  return lower.includes('eacces') || lower.includes('eperm') ||
+    lower.includes('permission denied') || lower.includes('operation not permitted');
+}
+
+/**
+ * Returns a platform-appropriate permission error hint.
+ */
+function getPermissionHint(): string {
+  if (process.platform === 'win32') {
+    return 'Permission denied. Try:\n  Run your terminal as Administrator and retry\n\nOr use npx wrangler instead (no install needed).';
+  }
+  return 'Permission denied. Try:\n  sudo npm install -g wrangler\n\nOr use npx wrangler instead (no install needed).';
+}
+
+/**
  * Installs wrangler globally via npm.
  * Returns true on success, false on failure.
  */
 export async function installWrangler(): Promise<{ success: boolean; error?: string }> {
   try {
-    await exec('npm', ['install', '-g', 'wrangler']);
+    const result = await exec('npm', ['install', '-g', 'wrangler']);
+
+    // exec resolves even on non-zero exit codes — check explicitly
+    if (result.code !== 0) {
+      const message = result.stderr || result.stdout || 'Install failed';
+      if (isPermissionError(message)) {
+        return { success: false, error: getPermissionHint() };
+      }
+      return { success: false, error: message };
+    }
+
     return { success: true };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-
-    // Check for permission errors (common on Unix without sudo)
-    if (message.includes('EACCES') || message.includes('permission denied')) {
-      return {
-        success: false,
-        error: 'Permission denied. Try:\n  sudo npm install -g wrangler\n\nOr use npx wrangler instead (no install needed).',
-      };
+    if (isPermissionError(message)) {
+      return { success: false, error: getPermissionHint() };
     }
-
     return { success: false, error: message };
   }
 }
@@ -43,6 +66,7 @@ export async function installWrangler(): Promise<{ success: boolean; error?: str
 export async function isWranglerAuthenticated(): Promise<boolean> {
   try {
     const result = await exec('wrangler', ['whoami']);
+    if (result.code !== 0) return false;
     // wrangler whoami returns 0 even when not logged in, but shows "not authenticated"
     return !result.stdout.toLowerCase().includes('not authenticated');
   } catch {
@@ -76,9 +100,11 @@ export async function deployWorker(
     const result = await exec('wrangler', ['deploy'], { cwd: projectDir });
     const output = result.stdout + result.stderr;
 
+    if (result.code !== 0) {
+      return { success: false, error: output || 'Deploy failed' };
+    }
+
     // Extract deployed URL from wrangler output
-    // wrangler prints something like: "Published supabase-proxy (1.23 sec)"
-    // or "https://supabase-proxy.username.workers.dev"
     const urlMatch = output.match(/https:\/\/[^\s]+\.workers\.dev/);
     const url = urlMatch ? urlMatch[0] : undefined;
 
@@ -94,7 +120,12 @@ export async function deployWorker(
  */
 export async function installDependencies(projectDir: string): Promise<{ success: boolean; error?: string }> {
   try {
-    await exec('npm', ['install'], { cwd: projectDir });
+    const result = await exec('npm', ['install'], { cwd: projectDir });
+
+    if (result.code !== 0) {
+      return { success: false, error: result.stderr || result.stdout || 'Install failed' };
+    }
+
     return { success: true };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
