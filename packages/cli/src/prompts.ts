@@ -33,9 +33,15 @@ function handleCancel(value: unknown): void {
  */
 export async function runPrompts(): Promise<UserAnswers> {
   // 1. Supabase project URL
+  clack.log.info(
+    pc.bold('Step 1 of 5') + pc.gray(' — Your Supabase project URL\n') +
+    pc.gray('  Find it in: Supabase Dashboard → Settings → API → Project URL\n') +
+    pc.gray('  It looks like: ') + pc.cyan('https://abcdefgh.supabase.co')
+  );
+
   const supabaseUrlRaw = await clack.text({
-    message: 'What is your Supabase project URL?',
-    placeholder: 'https://your-project.supabase.co',
+    message: 'Supabase project URL',
+    placeholder: 'abcdefgh.supabase.co',
     validate(value) {
       return validateSupabaseUrl(value);
     },
@@ -44,8 +50,15 @@ export async function runPrompts(): Promise<UserAnswers> {
   const supabaseUrl = normalizeSupabaseUrl(supabaseUrlRaw as string);
 
   // 2. CORS allowed origins
+  clack.log.info(
+    pc.bold('Step 2 of 5') + pc.gray(' — CORS allowed origins\n') +
+    pc.gray('  Which domains can access your proxy?\n') +
+    pc.gray('  • Use ') + pc.white('*') + pc.gray(' to allow all origins (easiest for development)\n') +
+    pc.gray('  • Or list your domains: ') + pc.cyan('https://myapp.com, https://staging.myapp.com')
+  );
+
   const originsRaw = await clack.text({
-    message: 'Allowed CORS origins (comma-separated, or * for all)',
+    message: 'Allowed origins',
     placeholder: '*',
     initialValue: '*',
     validate(value) {
@@ -56,15 +69,21 @@ export async function runPrompts(): Promise<UserAnswers> {
   const allowedOrigins = (originsRaw as string).trim();
 
   // 3. Which services to enable
+  clack.log.info(
+    pc.bold('Step 3 of 5') + pc.gray(' — Supabase services to proxy\n') +
+    pc.gray('  Select which Supabase services your app uses.\n') +
+    pc.gray('  Use ') + pc.white('space') + pc.gray(' to toggle, ') + pc.white('enter') + pc.gray(' to confirm.')
+  );
+
   const servicesRaw = await clack.multiselect({
-    message: 'Which Supabase services should the proxy support?',
+    message: 'Enable services',
     options: [
-      { value: 'rest', label: 'REST API', hint: 'PostgREST queries' },
-      { value: 'auth', label: 'Auth', hint: 'GoTrue authentication' },
-      { value: 'storage', label: 'Storage', hint: 'File uploads & downloads' },
-      { value: 'realtime', label: 'Realtime', hint: 'WebSocket subscriptions' },
-      { value: 'functions', label: 'Edge Functions', hint: 'Serverless functions' },
-      { value: 'graphql', label: 'GraphQL', hint: 'pg_graphql endpoint' },
+      { value: 'rest', label: 'REST API', hint: '/rest/ — PostgREST queries & CRUD' },
+      { value: 'auth', label: 'Auth', hint: '/auth/ — Login, signup, OAuth, sessions' },
+      { value: 'storage', label: 'Storage', hint: '/storage/ — File uploads & downloads' },
+      { value: 'realtime', label: 'Realtime', hint: '/realtime/ — WebSocket subscriptions' },
+      { value: 'functions', label: 'Edge Functions', hint: '/functions/ — Serverless functions' },
+      { value: 'graphql', label: 'GraphQL', hint: '/graphql/ — pg_graphql endpoint' },
     ],
     initialValues: ['rest', 'auth', 'storage', 'realtime', 'functions', 'graphql'],
     required: true,
@@ -73,8 +92,14 @@ export async function runPrompts(): Promise<UserAnswers> {
   const enabledServices = servicesRaw as SupabaseService[];
 
   // 4. Worker name
+  clack.log.info(
+    pc.bold('Step 4 of 5') + pc.gray(' — Cloudflare Worker name\n') +
+    pc.gray('  This becomes your proxy URL: ') + pc.cyan('https://<name>.<you>.workers.dev\n') +
+    pc.gray('  Lowercase letters, numbers, and hyphens only.')
+  );
+
   const workerNameRaw = await clack.text({
-    message: 'Worker name (used in Cloudflare dashboard & URL)',
+    message: 'Worker name',
     placeholder: 'supabase-proxy',
     initialValue: 'supabase-proxy',
     validate(value) {
@@ -85,6 +110,10 @@ export async function runPrompts(): Promise<UserAnswers> {
   const workerName = (workerNameRaw as string).trim();
 
   // 5. Project directory
+  clack.log.info(
+    pc.bold('Step 5 of 5') + pc.gray(' — Where to create the project')
+  );
+
   const projectDirRaw = await clack.text({
     message: 'Project directory',
     placeholder: `./${workerName}`,
@@ -113,16 +142,29 @@ export async function runPrompts(): Promise<UserAnswers> {
 }
 
 /**
- * Shows the welcome banner.
+ * Shows the welcome banner with context about what this tool does.
  */
 export function showBanner(): void {
   console.log();
-  console.log(pc.bold(pc.cyan('  ╭──────────────────────────────────────╮')));
-  console.log(pc.bold(pc.cyan('  │                                      │')));
-  console.log(pc.bold(pc.cyan('  │') + '   🚀 ' + pc.white('create-jiobase') + '                  ' + pc.cyan('│')));
-  console.log(pc.bold(pc.cyan('  │') + pc.gray('   Self-host your Supabase proxy') + '      ' + pc.cyan('│')));
-  console.log(pc.bold(pc.cyan('  │                                      │')));
-  console.log(pc.bold(pc.cyan('  ╰──────────────────────────────────────╯')));
+  console.log(pc.bold(pc.cyan('  ╭─────────────────────────────────────────────────╮')));
+  console.log(pc.bold(pc.cyan('  │                                                 │')));
+  console.log(pc.bold(pc.cyan('  │') + '   🚀 ' + pc.white('create-jiobase') + '                           ' + pc.cyan('│')));
+  console.log(pc.bold(pc.cyan('  │') + pc.gray('   Self-host a Supabase reverse proxy') + '            ' + pc.cyan('│')));
+  console.log(pc.bold(pc.cyan('  │') + pc.gray('   on Cloudflare Workers (free tier)') + '             ' + pc.cyan('│')));
+  console.log(pc.bold(pc.cyan('  │                                                 │')));
+  console.log(pc.bold(pc.cyan('  ╰─────────────────────────────────────────────────╯')));
+  console.log();
+  console.log(pc.gray('  Bypasses ISP-level DNS blocking of *.supabase.co'));
+  console.log(pc.gray('  by routing traffic through Cloudflare\'s edge network.'));
+  console.log();
+  console.log(pc.gray('  How it works:'));
+  console.log(pc.gray('  1. You provide your Supabase project URL'));
+  console.log(pc.gray('  2. We generate a Cloudflare Worker proxy'));
+  console.log(pc.gray('  3. Deploy it to Cloudflare (free plan works!)'));
+  console.log(pc.gray('  4. Update your app to use the proxy URL'));
+  console.log();
+  console.log(pc.gray('  Docs: ') + pc.cyan('https://jiobase.com'));
+  console.log(pc.gray('  GitHub: ') + pc.cyan('https://github.com/sunithvs/jiobase'));
   console.log();
 }
 
@@ -143,7 +185,7 @@ export async function confirmOverwrite(dir: string): Promise<boolean> {
  */
 export async function confirmWranglerInstall(): Promise<boolean> {
   const result = await clack.confirm({
-    message: 'Wrangler CLI not found. Install it now?',
+    message: `Wrangler CLI not found. Install it globally? ${pc.gray('(npm install -g wrangler)')}`,
     initialValue: true,
   });
   handleCancel(result);
@@ -155,7 +197,7 @@ export async function confirmWranglerInstall(): Promise<boolean> {
  */
 export async function confirmDeploy(): Promise<boolean> {
   const result = await clack.confirm({
-    message: 'Deploy the worker to Cloudflare now?',
+    message: `Deploy to Cloudflare now? ${pc.gray('(you can always do this later with: npx wrangler deploy)')}`,
     initialValue: true,
   });
   handleCancel(result);

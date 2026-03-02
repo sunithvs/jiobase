@@ -209,14 +209,25 @@ async function main() {
 
   // --- Success ---
   console.log();
+  clack.log.step(pc.bold('How to use the proxy in your app:'));
+  console.log();
+  console.log(pc.gray('  Replace your Supabase client URL:'));
+  console.log();
+  console.log(pc.gray('  ') + pc.red('// Before (blocked by ISP)'));
+  console.log(pc.gray('  ') + pc.white(`const supabase = createClient('${answers.supabaseUrl}', 'your-anon-key')`));
+  console.log();
+  console.log(pc.gray('  ') + pc.green('// After (works everywhere)'));
+  console.log(pc.gray('  ') + pc.white(`const supabase = createClient('https://${answers.workerName}.<you>.workers.dev', 'your-anon-key')`));
+  console.log();
+
   clack.log.info(
-    pc.bold('Next steps:\n') +
-    pc.gray(`  • Update your Supabase client to use the proxy URL\n`) +
-    pc.gray(`  • Run ${pc.white(`cd ${answers.projectDir} && npm run dev`)} for local testing\n`) +
-    pc.gray(`  • See logs: ${pc.white('npx wrangler tail')}`)
+    pc.bold('Useful commands:\n') +
+    pc.gray(`  ${pc.white(`cd ${answers.projectDir} && npm run dev`)}   → Local testing\n`) +
+    pc.gray(`  ${pc.white(`cd ${answers.projectDir} && npm run deploy`)} → Re-deploy changes\n`) +
+    pc.gray(`  ${pc.white('npx wrangler tail')}                    → View live logs`)
   );
 
-  clack.outro(pc.green('Done! Happy self-hosting 🎉'));
+  clack.outro(pc.green('Done! Your Supabase proxy is ready 🎉'));
 }
 
 main().catch((err) => {

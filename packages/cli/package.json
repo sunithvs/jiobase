@@ -1,6 +1,6 @@
 {
   "name": "create-jiobase",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Deploy a production-quality Supabase proxy on Cloudflare Workers in under 2 minutes",
   "license": "AGPL-3.0-only",
   "type": "module",
