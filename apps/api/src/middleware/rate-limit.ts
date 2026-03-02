@@ -67,21 +67,32 @@ export function rateLimitMiddleware(options: RateLimitOptions) {
 }
 
 /**
+ * General API rate limiter: broad protection for all endpoints.
+ * 200 requests per minute per IP — generous for legit users,
+ * blocks sustained bot abuse.
+ */
+export const apiRateLimit = rateLimitMiddleware({
+  max: 200,
+  windowSeconds: 60,
+  keyPrefix: 'rl:api',
+});
+
+/**
  * Login-specific rate limiter: stricter limits.
- * 5 attempts per 15 minutes per IP.
+ * 10 attempts per 15 minutes per IP.
  */
 export const loginRateLimit = rateLimitMiddleware({
-  max: 5,
+  max: 10,
   windowSeconds: 900, // 15 minutes
   keyPrefix: 'rl:login',
 });
 
 /**
  * Register rate limiter: moderate limits.
- * 3 accounts per hour per IP.
+ * 5 accounts per hour per IP.
  */
 export const registerRateLimit = rateLimitMiddleware({
-  max: 3,
+  max: 5,
   windowSeconds: 3600, // 1 hour
   keyPrefix: 'rl:register',
 });

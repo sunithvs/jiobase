@@ -2,6 +2,7 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import auth from './routes/auth.js';
 import apps from './routes/apps.js';
+import { apiRateLimit } from './middleware/rate-limit.js';
 import type { AppEnv } from './types.js';
 
 const app = new Hono<AppEnv>();
@@ -29,6 +30,9 @@ app.use('/api/*', cors({
   allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization'],
 }));
+
+// Global rate limit — 60 requests/minute per IP across all API endpoints
+app.use('/api/*', apiRateLimit);
 
 // Health check
 app.get('/api/health', (c) => {
