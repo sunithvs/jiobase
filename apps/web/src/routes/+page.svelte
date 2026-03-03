@@ -101,7 +101,7 @@
 			<p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400 md:text-xl">
 				Great news - Supabase blocking has been resolved from the ISP side.
 				JioBase's managed proxy is no longer needed and will be shut down.
-				<strong class="text-white">Please migrate to your own self-hosted proxy.</strong>
+				<strong class="text-white">Please migrate back to your original Supabase URLs.</strong>
 			</p>
 
 			<!-- Social links -->
