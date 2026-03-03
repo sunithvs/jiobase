@@ -56,6 +56,9 @@
 				<a href="#frameworks" class="block text-gray-300 transition hover:text-brand-400">Framework-specific guides</a>
 				<a href="#features" class="block text-gray-300 transition hover:text-brand-400">Supported features</a>
 				<a href="#configuration" class="block text-gray-300 transition hover:text-brand-400">Configuration options</a>
+				<a href="#configuration" class="block pl-4 text-gray-500 transition hover:text-brand-400 text-xs">↳ Rate limiting</a>
+				<a href="#configuration" class="block pl-4 text-gray-500 transition hover:text-brand-400 text-xs">↳ Failover</a>
+				<a href="#configuration" class="block pl-4 text-gray-500 transition hover:text-brand-400 text-xs">↳ Analytics</a>
 				<a href="#faq" class="block text-gray-300 transition hover:text-brand-400">FAQ</a>
 				<a href="#self-host" class="block text-gray-300 transition hover:text-brand-400">Self-host your own proxy</a>
 			</nav>
@@ -426,8 +429,74 @@
 					<div class="glass-card rounded-xl p-5">
 						<h3 class="font-semibold text-white">Rate Limiting</h3>
 						<p class="mt-1 text-sm text-gray-400">
-							Set a per-minute request limit to protect your Supabase project. Default is 600 requests/minute. Set to 0 for no limit.
+							Three-layer protection enforced at the Cloudflare edge before requests reach your Supabase project:
 						</p>
+						<ul class="mt-3 space-y-2 text-sm text-gray-400">
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span><strong class="text-gray-200">Global limit</strong> — max requests/min for the entire slug. Default 600, set to 0 for unlimited.</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span><strong class="text-gray-200">Per-IP limit</strong> — a single IP can use at most 60% of the global limit, preventing one abuser from consuming your whole quota.</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span><strong class="text-gray-200">Per-user limit</strong> — authenticated users (identified by their Supabase JWT) are limited to 80% of the global limit.</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span><strong class="text-gray-200">Burst size</strong> — allow N requests through instantly before throttling kicks in. Useful for pages that fire multiple requests on load.</span>
+							</li>
+						</ul>
+						<p class="mt-3 text-sm text-gray-400">Blocked requests receive a <code class="text-gray-300">429</code> response with <code class="text-gray-300">Retry-After</code> and <code class="text-gray-300">X-RateLimit-*</code> headers.</p>
+					</div>
+
+					<div class="glass-card rounded-xl p-5">
+						<h3 class="font-semibold text-white">Failover</h3>
+						<p class="mt-1 text-sm text-gray-400">
+							Add a backup Supabase URL and the proxy will automatically switch traffic if the primary becomes unreachable. Features:
+						</p>
+						<ul class="mt-3 space-y-2 text-sm text-gray-400">
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span>Triggers on timeout (configurable, default 5s) or 502/503/504 responses from primary</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span>Auto-recovery — periodically probes primary and switches back when it responds successfully</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span>Live status visible on your app dashboard — green (primary) or amber (backup)</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span>Manual reset available to force traffic back to primary immediately</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="glass-card rounded-xl p-5">
+						<h3 class="font-semibold text-white">Analytics</h3>
+						<p class="mt-1 text-sm text-gray-400">
+							Every request is tracked via Cloudflare Analytics Engine. View from your app's Analytics page:
+						</p>
+						<ul class="mt-3 space-y-2 text-sm text-gray-400">
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span><strong class="text-gray-200">Latency</strong> — p50, p95, p99 response times</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span><strong class="text-gray-200">Service breakdown</strong> — which Supabase services (rest/auth/storage/realtime) are being called and how often</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+								<span><strong class="text-gray-200">Error tracking</strong> — hourly 5xx error rate with automatic spike detection</span>
+							</li>
+						</ul>
+						<p class="mt-3 text-sm text-gray-400">Data is available in 1h, 24h, 7d, and 30d windows. Note: Analytics Engine has a ~5 minute processing delay before data appears.</p>
 					</div>
 
 					<div class="glass-card rounded-xl p-5">
