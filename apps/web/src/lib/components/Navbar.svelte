@@ -14,7 +14,7 @@
 	});
 </script>
 
-<nav class="fixed top-0 z-50 w-full border-b border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl">
+<nav class="fixed top-[36px] z-50 w-full border-b border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl">
 	<div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
 		<a href="/" class="flex items-center gap-2">
 			<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-400/10">

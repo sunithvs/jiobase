@@ -1,38 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import PlatformInstaller from '$lib/components/PlatformInstaller.svelte';
-
-	// Countdown: 24 hours from deploy time (March 3, 2026 at midnight UTC)
-	const SHUTDOWN_TIME = new Date('2026-03-04T23:59:59Z').getTime();
-
-	let hours = $state(0);
-	let minutes = $state(0);
-	let seconds = $state(0);
-	let expired = $state(false);
-
-	onMount(() => {
-		function tick() {
-			const diff = SHUTDOWN_TIME - Date.now();
-			if (diff <= 0) {
-				expired = true;
-				hours = 0;
-				minutes = 0;
-				seconds = 0;
-				return;
-			}
-			hours = Math.floor(diff / 3_600_000);
-			minutes = Math.floor((diff % 3_600_000) / 60_000);
-			seconds = Math.floor((diff % 60_000) / 1_000);
-		}
-		tick();
-		const interval = setInterval(tick, 1_000);
-		return () => clearInterval(interval);
-	});
-
-	function pad(n: number) {
-		return String(n).padStart(2, '0');
-	}
 </script>
 
 <svelte:head>
@@ -78,7 +46,7 @@
 
 
 	<!-- ===== HERO — SHUTDOWN ANNOUNCEMENT ===== -->
-	<section class="relative overflow-hidden pt-40 pb-20 md:pt-52 md:pb-32">
+	<section class="relative overflow-hidden pt-48 pb-20 md:pt-60 md:pb-32">
 		<!-- Subtle red glow -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">
 			<div class="absolute left-1/2 top-0 -translate-x-1/2 h-[600px] w-[800px] rounded-full bg-red-500/5 blur-3xl"></div>
@@ -139,33 +107,33 @@
 				</a>
 			</div>
 
-			<!-- ===== COUNTDOWN ===== -->
-			<div class="mx-auto mt-12 max-w-lg">
-				<p class="mb-4 text-sm font-medium uppercase tracking-widest text-gray-500">
-					{expired ? 'Service has been shut down' : 'Time remaining'}
+		</div>
+	</section>
+
+
+	<!-- ===== SUPPORT THE PROJECT ===== -->
+	<section class="border-t border-white/5 py-16 md:py-20">
+		<div class="mx-auto max-w-2xl px-6">
+			<div class="rounded-2xl border border-amber-400/10 bg-amber-400/[0.03] p-8 sm:p-10 text-center">
+				<h2 class="text-2xl font-bold tracking-tight sm:text-3xl">
+					JioBase kept your app alive.
+					<br />
+					<span class="text-amber-400">Now it needs one last thing.</span>
+				</h2>
+				<p class="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-gray-400">
+					When Supabase went dark across India, JioBase was built in days and kept running for free — proxying millions of requests, paying for Cloudflare out of pocket. No VC funding. No ads. Just one developer who thought Indian devs deserved a fix, not a paywall.
 				</p>
-				<div class="flex items-center justify-center gap-3 sm:gap-5">
-					<div class="flex flex-col items-center">
-						<div class="flex h-20 w-20 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/5 sm:h-24 sm:w-24">
-							<span class="text-3xl font-bold tabular-nums text-red-400 sm:text-4xl">{pad(hours)}</span>
-						</div>
-						<span class="mt-2 text-xs font-medium uppercase tracking-wider text-gray-500">Hours</span>
-					</div>
-					<span class="text-2xl font-bold text-red-400/40 sm:text-3xl">:</span>
-					<div class="flex flex-col items-center">
-						<div class="flex h-20 w-20 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/5 sm:h-24 sm:w-24">
-							<span class="text-3xl font-bold tabular-nums text-red-400 sm:text-4xl">{pad(minutes)}</span>
-						</div>
-						<span class="mt-2 text-xs font-medium uppercase tracking-wider text-gray-500">Minutes</span>
-					</div>
-					<span class="text-2xl font-bold text-red-400/40 sm:text-3xl">:</span>
-					<div class="flex flex-col items-center">
-						<div class="flex h-20 w-20 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/5 sm:h-24 sm:w-24">
-							<span class="text-3xl font-bold tabular-nums text-red-400 sm:text-4xl">{pad(seconds)}</span>
-						</div>
-						<span class="mt-2 text-xs font-medium uppercase tracking-wider text-gray-500">Seconds</span>
-					</div>
-				</div>
+				<a
+					href="https://buymeacoffee.com/sunithvs"
+					target="_blank"
+					rel="noopener"
+					class="mt-6 inline-flex items-center gap-3 rounded-xl bg-amber-400 px-8 py-4 text-base font-bold text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300 hover:shadow-amber-400/30"
+				>
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+					</svg>
+					Buy me a coffee
+				</a>
 			</div>
 		</div>
 	</section>
@@ -307,16 +275,62 @@
 	</section>
 
 
-	<!-- ===== THANK YOU ===== -->
-	<section class="border-t border-white/5 bg-surface-200/30 py-20 md:py-24">
-		<div class="mx-auto max-w-3xl px-6 text-center">
-			<p class="text-sm font-semibold uppercase tracking-wider text-brand-400">Thank you</p>
-			<h2 class="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
-				Thanks to everyone who used JioBase
-			</h2>
-			<p class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-gray-400">
-				JioBase was built as a quick response to the Supabase DNS blocking crisis in India. It helped thousands of developers keep their apps running during the block. Now that the issue has been resolved, the managed service is no longer needed. The open-source CLI tool <code class="rounded bg-brand-400/10 px-1.5 py-0.5 text-brand-400">create-jiobase</code> will continue to be maintained for anyone who wants a self-hosted proxy.
-			</p>
+	<!-- ===== SUPPORT THE PROJECT ===== -->
+	<section class="border-t border-white/5 py-24 md:py-32">
+		<div class="mx-auto max-w-3xl px-6">
+			<div class="text-center">
+				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+					JioBase kept your app alive.
+					<br />
+					<span class="text-amber-400">Now it needs one last thing.</span>
+				</h2>
+			</div>
+
+			<div class="mt-10 rounded-2xl border border-amber-400/10 bg-amber-400/[0.03] p-8 sm:p-10">
+				<div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
+					<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-400/10">
+						<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+						</svg>
+					</div>
+					<div>
+						<p class="text-base leading-relaxed text-gray-300">
+							When Supabase went dark across India, JioBase was built in days and kept running for free — proxying millions of requests, paying for Cloudflare out of pocket, so your users never noticed the block.
+						</p>
+						<p class="mt-4 text-base leading-relaxed text-gray-300">
+							No VC funding. No ads. No premium tier. Just one developer who thought Indian devs deserved a fix, not a paywall.
+						</p>
+						<p class="mt-4 text-sm text-gray-500">
+							The servers are winding down, but the hosting bills don't disappear overnight. If JioBase saved your app — even once — a coffee goes a long way.
+						</p>
+					</div>
+				</div>
+
+				<div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+					<a
+						href="https://buymeacoffee.com/sunithvs"
+						target="_blank"
+						rel="noopener"
+						class="flex items-center gap-3 rounded-xl bg-amber-400 px-8 py-4 text-base font-bold text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300 hover:shadow-amber-400/30"
+					>
+						<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+						</svg>
+						Buy me a coffee
+					</a>
+					<a
+						href="https://github.com/sunithvs/jiobase"
+						target="_blank"
+						rel="noopener"
+						class="flex items-center gap-2 rounded-xl border border-white/10 px-8 py-4 text-base font-medium text-gray-300 transition hover:border-white/20 hover:text-white"
+					>
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+						</svg>
+						Star on GitHub
+					</a>
+				</div>
+			</div>
 
 			<div class="mt-8 flex items-center justify-center gap-6">
 				<a href="https://github.com/sunithvs/jiobase" target="_blank" rel="noopener" class="text-sm text-gray-500 transition hover:text-white">
