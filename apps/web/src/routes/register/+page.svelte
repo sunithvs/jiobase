@@ -41,7 +41,7 @@
 
 			<p class="mt-5 text-center text-xs text-gray-500">
 				For assistance and support, email
-				<a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>
+				<a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>
 			</p>
 		</div>
 

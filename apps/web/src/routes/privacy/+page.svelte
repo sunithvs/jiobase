@@ -89,7 +89,7 @@
 						</div>
 						<div class="flex flex-col gap-1 sm:flex-row sm:gap-3">
 							<strong class="w-32 shrink-0 text-white">Email</strong>
-							<a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>
+							<a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>
 						</div>
 					</div>
 				</div>
@@ -399,7 +399,7 @@
 					<div class="glass-card rounded-xl p-5">
 						<h3 class="mb-1 text-sm font-semibold text-white">Right to Access</h3>
 						<p class="text-sm leading-relaxed text-gray-400">
-							You have the right to obtain a summary of your personal data held by JioBase, including the processing activities performed on that data. You can view most of your data directly through the dashboard. For a complete data export, contact us at <a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>.
+							You have the right to obtain a summary of your personal data held by JioBase, including the processing activities performed on that data. You can view most of your data directly through the dashboard. For a complete data export, contact us at <a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>.
 						</p>
 					</div>
 					<div class="glass-card rounded-xl p-5">
@@ -423,7 +423,7 @@
 					<div class="glass-card rounded-xl p-5">
 						<h3 class="mb-1 text-sm font-semibold text-white">Right to Nominate</h3>
 						<p class="text-sm leading-relaxed text-gray-400">
-							Under the DPDP Act, 2023, you have the right to nominate another individual to exercise your data rights on your behalf in the event of your death or incapacity. To register a nominee, contact us at <a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>.
+							Under the DPDP Act, 2023, you have the right to nominate another individual to exercise your data rights on your behalf in the event of your death or incapacity. To register a nominee, contact us at <a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>.
 						</p>
 					</div>
 					<div class="glass-card rounded-xl p-5">
@@ -502,7 +502,7 @@
 			<section>
 				<h2 class="mb-4 text-2xl font-bold tracking-tight text-white">12. Children's Privacy</h2>
 				<p class="leading-relaxed text-gray-300">
-					JioBase is a developer tool intended for use by software developers and businesses. The service is not directed at individuals under the age of 18. JioBase does not knowingly collect personal data from children under 18. If you believe that a child under 18 has provided personal data to JioBase, please contact us at <a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>, and we will promptly delete the data and terminate the associated account.
+					JioBase is a developer tool intended for use by software developers and businesses. The service is not directed at individuals under the age of 18. JioBase does not knowingly collect personal data from children under 18. If you believe that a child under 18 has provided personal data to JioBase, please contact us at <a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>, and we will promptly delete the data and terminate the associated account.
 				</p>
 			</section>
 
@@ -608,7 +608,7 @@
 						</div>
 						<div class="flex flex-col gap-1 sm:flex-row sm:gap-3">
 							<strong class="w-32 shrink-0 text-white">Email</strong>
-							<a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>
+							<a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>
 						</div>
 					</div>
 				</div>
@@ -669,7 +669,7 @@
 					<div class="space-y-3 text-sm text-gray-300">
 						<div class="flex flex-col gap-1 sm:flex-row sm:gap-3">
 							<strong class="w-32 shrink-0 text-white">Email</strong>
-							<a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>
+							<a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>
 						</div>
 						<div class="flex flex-col gap-1 sm:flex-row sm:gap-3">
 							<strong class="w-32 shrink-0 text-white">Website</strong>

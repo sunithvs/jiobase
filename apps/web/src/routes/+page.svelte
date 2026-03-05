@@ -36,8 +36,8 @@
 </script>
 
 <svelte:head>
-	<title>JioBase - Service Shutting Down | Migrate to Self-Hosted</title>
-	<meta name="description" content="JioBase managed proxy service is shutting down. Supabase blocking has been resolved by ISPs. Migrate to your own self-hosted proxy with npx create-jiobase." />
+	<title>JioBase - Service Stopped | Migrate to Supabase URLs</title>
+	<meta name="description" content="JioBase managed proxy service has stopped. Supabase blocking has been resolved by ISPs. Migrate back to your original Supabase URLs." />
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		"@context": "https://schema.org",
 		"@graph": [
@@ -73,7 +73,7 @@
 
 	<!-- ===== SHUTDOWN BANNER (fixed top bar) ===== -->
 	<div class="fixed top-0 left-0 right-0 z-[60] bg-red-600 py-2 text-center text-sm font-semibold text-white">
-		JioBase managed service is shutting down. Migrate now.
+		JioBase managed service has stopped. Migrate now.
 	</div>
 
 
@@ -89,11 +89,11 @@
 			<!-- Status badge -->
 			<div class="mb-8 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-5 py-2">
 				<span class="h-2.5 w-2.5 rounded-full bg-red-500 animate-pulse"></span>
-				<span class="text-sm font-semibold text-red-400">Service Shutting Down</span>
+				<span class="text-sm font-semibold text-red-400">Service Stopped</span>
 			</div>
 
 			<h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-				<span class="text-red-400">JioBase is stopping</span>
+				<span class="text-red-400">JioBase has stopped</span>
 				<br />
 				its managed service.
 			</h1>
@@ -222,7 +222,7 @@
 						<span class="ml-3 text-xs text-gray-500">supabaseClient.ts</span>
 					</div>
 					<div class="overflow-x-auto px-6 pb-5 font-mono text-sm leading-7">
-						<div class="text-gray-500">// Before (JioBase managed — shutting down)</div>
+						<div class="text-gray-500">// Before (JioBase managed — stopped)</div>
 						<div>
 							<span class="text-red-400 line-through opacity-60">https://xyz.jiobase.com</span>
 						</div>
@@ -301,7 +301,7 @@
 			<!-- Support email -->
 			<p class="mt-8 text-sm text-gray-500">
 				For assistance and support, email
-				<a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>
+				<a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>
 			</p>
 		</div>
 	</section>

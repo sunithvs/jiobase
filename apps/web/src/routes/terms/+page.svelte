@@ -659,7 +659,7 @@
 						</div>
 						<div class="flex items-start gap-3">
 							<strong class="text-gray-300 shrink-0 w-36">Email:</strong>
-							<a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>
+							<a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>
 						</div>
 						<div class="flex items-start gap-3">
 							<strong class="text-gray-300 shrink-0 w-36">Website:</strong>
@@ -684,7 +684,7 @@
 						</div>
 						<div class="flex items-start gap-3">
 							<strong class="text-gray-300 shrink-0 w-36">Email:</strong>
-							<a href="mailto:support@jiobase.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">support@jiobase.com</a>
+							<a href="mailto:hi@sunithvs.com" class="text-brand-400 underline decoration-brand-400/30 underline-offset-4 transition hover:decoration-brand-400">hi@sunithvs.com</a>
 						</div>
 						<div class="flex items-start gap-3">
 							<strong class="text-gray-300 shrink-0 w-36">Response time:</strong>
