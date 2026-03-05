@@ -275,72 +275,96 @@
 	</section>
 
 
-	<!-- ===== SUPPORT THE PROJECT ===== -->
-	<section class="border-t border-white/5 py-24 md:py-32">
-		<div class="mx-auto max-w-3xl px-6">
-			<div class="text-center">
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-					JioBase kept your app alive.
-					<br />
-					<span class="text-amber-400">Now it needs one last thing.</span>
-				</h2>
-			</div>
+	<!-- ===== FOLLOW & STAR ===== -->
+	<section class="border-t border-white/5 py-20 md:py-28">
+		<div class="mx-auto max-w-3xl px-6 text-center">
+			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+				Follow for future products
+			</h2>
+			<p class="mx-auto mt-4 max-w-xl text-gray-400">
+				JioBase is winding down, but I'm just getting started. Follow me for new open-source tools, dev resources, and what I'm building next.
+			</p>
 
-			<div class="mt-10 rounded-2xl border border-amber-400/10 bg-amber-400/[0.03] p-8 sm:p-10">
-				<div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
-					<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-400/10">
-						<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
-						</svg>
-					</div>
-					<div>
-						<p class="text-base leading-relaxed text-gray-300">
-							When Supabase went dark across India, JioBase was built in days and kept running for free — proxying millions of requests, paying for Cloudflare out of pocket, so your users never noticed the block.
-						</p>
-						<p class="mt-4 text-base leading-relaxed text-gray-300">
-							No VC funding. No ads. No premium tier. Just one developer who thought Indian devs deserved a fix, not a paywall.
-						</p>
-						<p class="mt-4 text-sm text-gray-500">
-							The servers are winding down, but the hosting bills don't disappear overnight. If JioBase saved your app — even once — a coffee goes a long way.
-						</p>
-					</div>
-				</div>
-
-				<div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-					<a
-						href="https://buymeacoffee.com/sunithvs"
-						target="_blank"
-						rel="noopener"
-						class="flex items-center gap-3 rounded-xl bg-amber-400 px-8 py-4 text-base font-bold text-black shadow-lg shadow-amber-400/20 transition hover:bg-amber-300 hover:shadow-amber-400/30"
-					>
-						<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
-						</svg>
-						Buy me a coffee
-					</a>
-					<a
-						href="https://github.com/sunithvs/jiobase"
-						target="_blank"
-						rel="noopener"
-						class="flex items-center gap-2 rounded-xl border border-white/10 px-8 py-4 text-base font-medium text-gray-300 transition hover:border-white/20 hover:text-white"
-					>
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+			<div class="mt-10 grid gap-4 sm:grid-cols-2">
+				<!-- GitHub -->
+				<a
+					href="https://github.com/sunithvs/jiobase"
+					target="_blank"
+					rel="noopener"
+					class="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition hover:border-white/20 hover:bg-white/[0.04]"
+				>
+					<div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/5">
+						<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" class="text-gray-400 group-hover:text-white transition">
 							<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
 						</svg>
-						Star on GitHub
-					</a>
-				</div>
-			</div>
+					</div>
+					<div class="text-left">
+						<p class="text-sm font-semibold text-white group-hover:text-brand-400 transition">Star on GitHub</p>
+						<p class="text-xs text-gray-500">sunithvs/jiobase</p>
+					</div>
+				</a>
 
-			<div class="mt-8 flex items-center justify-center gap-6">
-				<a href="https://github.com/sunithvs/jiobase" target="_blank" rel="noopener" class="text-sm text-gray-500 transition hover:text-white">
-					GitHub
+				<!-- X / Twitter -->
+				<a
+					href="https://x.com/sunithvs_"
+					target="_blank"
+					rel="noopener"
+					class="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition hover:border-white/20 hover:bg-white/[0.04]"
+				>
+					<div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/5">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-gray-400 group-hover:text-white transition">
+							<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+						</svg>
+					</div>
+					<div class="text-left">
+						<p class="text-sm font-semibold text-white group-hover:text-gray-100 transition">@sunithvs_</p>
+						<p class="text-xs text-gray-500">X (Twitter)</p>
+					</div>
 				</a>
-				<a href="/self-host" class="text-sm text-gray-500 transition hover:text-white">
-					Self-host guide
+
+				<!-- Instagram -->
+				<a
+					href="https://www.instagram.com/truevibecoder/"
+					target="_blank"
+					rel="noopener"
+					class="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition hover:border-pink-500/20 hover:bg-pink-500/[0.03]"
+				>
+					<div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/5">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="shrink-0">
+							<rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#ig-follow)" stroke-width="1.5"/>
+							<circle cx="12" cy="12" r="5" stroke="url(#ig-follow)" stroke-width="1.5"/>
+							<circle cx="17.5" cy="6.5" r="1.5" fill="url(#ig-follow)"/>
+							<defs>
+								<linearGradient id="ig-follow" x1="2" y1="22" x2="22" y2="2">
+									<stop stop-color="#F58529"/>
+									<stop offset="0.5" stop-color="#DD2A7B"/>
+									<stop offset="1" stop-color="#8134AF"/>
+								</linearGradient>
+							</defs>
+						</svg>
+					</div>
+					<div class="text-left">
+						<p class="text-sm font-semibold text-white group-hover:text-pink-300 transition">@truevibecoder</p>
+						<p class="text-xs text-gray-500">Instagram</p>
+					</div>
 				</a>
-				<a href="/blog" class="text-sm text-gray-500 transition hover:text-white">
-					Blog
+
+				<!-- LinkedIn -->
+				<a
+					href="https://www.linkedin.com/in/sunithvs/"
+					target="_blank"
+					rel="noopener"
+					class="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.02] p-5 transition hover:border-blue-500/20 hover:bg-blue-500/[0.03]"
+				>
+					<div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/5">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-gray-400 group-hover:text-[#0A66C2] transition">
+							<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+						</svg>
+					</div>
+					<div class="text-left">
+						<p class="text-sm font-semibold text-white group-hover:text-[#0A66C2] transition">Sunith VS</p>
+						<p class="text-xs text-gray-500">LinkedIn</p>
+					</div>
 				</a>
 			</div>
 		</div>
