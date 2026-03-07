@@ -116,14 +116,24 @@ appsRouter.put('/:id', async (c) => {
   const values: any[] = [now];
 
   const fieldMap: Record<string, string> = {
-    name: 'name',
-    supabaseUrl: 'supabase_url',
-    supabaseAnonKey: 'supabase_anon_key',
-    isActive: 'is_active',
-    rateLimitPerMinute: 'rate_limit_per_minute',
-    allowedOrigins: 'allowed_origins',
-    customHeaders: 'custom_headers',
-    enabledServices: 'enabled_services',
+    // Basic
+    name:                'name',
+    supabaseUrl:         'supabase_url',
+    supabaseAnonKey:     'supabase_anon_key',
+    isActive:            'is_active',
+    // Rate limiting
+    rateLimitPerMinute:  'rate_limit_per_minute',
+    rateLimitBurstSize:  'rate_limit_burst_size',
+    trackPerIp:          'track_per_ip',
+    trackPerUser:        'track_per_user',
+    // Failover
+    backupSupabaseUrl:   'backup_supabase_url',
+    enableFailover:      'enable_failover',
+    failoverThresholdMs: 'failover_threshold_ms',
+    // CORS / config
+    allowedOrigins:      'allowed_origins',
+    customHeaders:       'custom_headers',
+    enabledServices:     'enabled_services',
   };
 
   for (const [key, col] of Object.entries(fieldMap)) {
@@ -205,6 +215,52 @@ appsRouter.post('/:id/toggle', async (c) => {
   }
 
   return c.json({ data: updated });
+});
+
+// GET /api/apps/:id/failover-status
+appsRouter.get('/:id/failover-status', async (c) => {
+  const user = c.get('user');
+  const appId = c.req.param('id');
+
+  const app = await c.env.DB.prepare(
+    'SELECT id, enable_failover, backup_supabase_url FROM apps WHERE id = ? AND user_id = ?'
+  ).bind(appId, user.id).first<{ id: string; enable_failover: number; backup_supabase_url: string | null }>();
+
+  if (!app) return c.json({ error: 'App not found' }, 404);
+
+  if (!app.enable_failover || !app.backup_supabase_url) {
+    return c.json({ data: { appId, activeUrl: 'primary', isFailing: false, failedAt: null, failoverEnabled: false } });
+  }
+
+  const raw = await c.env.PROXY_CONFIG.get(`failover:${appId}`);
+  const state = raw
+    ? (JSON.parse(raw) as { status: 'primary' | 'backup'; failedAt: number | null })
+    : { status: 'primary' as const, failedAt: null };
+
+  return c.json({
+    data: {
+      appId,
+      activeUrl:      state.status,
+      isFailing:      state.status === 'backup',
+      failedAt:       state.failedAt,
+      failoverEnabled: true,
+    },
+  });
+});
+
+// POST /api/apps/:id/failover-reset
+appsRouter.post('/:id/failover-reset', async (c) => {
+  const user = c.get('user');
+  const appId = c.req.param('id');
+
+  const app = await c.env.DB.prepare(
+    'SELECT id FROM apps WHERE id = ? AND user_id = ?'
+  ).bind(appId, user.id).first();
+
+  if (!app) return c.json({ error: 'App not found' }, 404);
+
+  await c.env.PROXY_CONFIG.delete(`failover:${appId}`);
+  return c.json({ message: 'Failover state reset. Traffic will route to primary.' });
 });
 
 export default appsRouter;

@@ -2,6 +2,106 @@ import type { Env, ProxyConfig } from './types.js';
 import { addCorsHeaders } from './cors.js';
 import type { SupabaseService } from '@jiobase/shared';
 import { SERVICE_PATH_MAP } from '@jiobase/shared';
+import {
+  fetchWithTimeout,
+  getActiveUrl,
+  isUpstreamFailure,
+  markPrimaryFailed,
+  markPrimaryRecovered,
+} from './failover.js';
+
+function getServiceFromPath(pathname: string): SupabaseService | null {
+  const match = pathname.match(/^\/([a-z]+)\//);
+  if (!match) return null;
+  return SERVICE_PATH_MAP[match[1]] || null;
+}
+
+function buildUpstreamHeaders(
+  request: Request,
+  upstreamHostname: string,
+  customHeaders?: Record<string, string>
+): Headers {
+  const headers = new Headers(request.headers);
+  headers.set('Host', upstreamHostname);
+  headers.delete('cf-connecting-ip');
+  headers.delete('cf-ray');
+  headers.delete('cf-visitor');
+  headers.delete('cf-ipcountry');
+  headers.delete('cf-worker');
+  if (customHeaders) {
+    for (const [k, v] of Object.entries(customHeaders)) headers.set(k, v);
+  }
+  return headers;
+}
+
+/**
+ * Forward the request upstream with optional failover.
+ *
+ * Body is buffered into ArrayBuffer before the first attempt so it can be
+ * replayed on the backup attempt — a ReadableStream can only be consumed once.
+ */
+async function fetchUpstream(
+  request: Request,
+  upstreamPath: string,
+  upstreamSearch: string,
+  headers: Headers,
+  config: ProxyConfig,
+  env: Env
+): Promise<{ response: Response; usedBackup: boolean }> {
+  const { url: activeUrl, isBackup } = await getActiveUrl(
+    env, config.appId, config.supabaseUrl, config.backupSupabaseUrl, config.enableFailover
+  );
+
+  const buildUrl = (base: string) => {
+    const u = new URL(base);
+    u.pathname = upstreamPath;
+    u.search = upstreamSearch;
+    return u.toString();
+  };
+
+  // Buffer body once so it can be re-sent on failover retry
+  let bodyBuffer: ArrayBuffer | null = null;
+  if (request.method !== 'GET' && request.method !== 'HEAD' && request.body) {
+    bodyBuffer = await request.arrayBuffer();
+  }
+
+  const fetchInit: RequestInit = {
+    method: request.method,
+    headers,
+    body: bodyBuffer ?? undefined,
+    redirect: 'manual',
+  };
+
+  // Attempt 1 — primary (or backup if already in failover)
+  try {
+    const response = await fetchWithTimeout(buildUrl(activeUrl), fetchInit, config.failoverThresholdMs);
+
+    if (!isUpstreamFailure(response.status)) {
+      // Recovered — clear failover state if we were probing primary
+      if (!isBackup && config.enableFailover) {
+        await markPrimaryRecovered(env, config.appId).catch(() => {});
+      }
+      return { response, usedBackup: isBackup };
+    }
+
+    // 5xx from primary — try backup if available
+    if (!config.enableFailover || !config.backupSupabaseUrl || isBackup) {
+      return { response, usedBackup: isBackup };
+    }
+
+    await markPrimaryFailed(env, config.appId).catch(() => {});
+  } catch (err: unknown) {
+    const isAbort = err instanceof Error && err.name === 'AbortError';
+    if (!config.enableFailover || !config.backupSupabaseUrl || isBackup || !isAbort) throw err;
+    await markPrimaryFailed(env, config.appId).catch(() => {});
+  }
+
+  // Attempt 2 — backup
+  const backupResponse = await fetchWithTimeout(
+    buildUrl(config.backupSupabaseUrl!), fetchInit, config.failoverThresholdMs
+  );
+  return { response: backupResponse, usedBackup: true };
+}
 
 export async function handleHttpProxy(
   request: Request,
@@ -10,101 +110,72 @@ export async function handleHttpProxy(
 ): Promise<Response> {
   const url = new URL(request.url);
 
-  // Check if the service is enabled
   const service = getServiceFromPath(url.pathname);
   if (service && !config.enabledServices.includes(service)) {
-    return Response.json(
-      { error: `Service '${service}' is not enabled for this app` },
-      { status: 403 }
-    );
+    return Response.json({ error: `Service '${service}' is not enabled for this app` }, { status: 403 });
   }
 
-  // Build upstream URL
-  const upstreamUrl = new URL(config.supabaseUrl);
-  upstreamUrl.pathname = url.pathname;
-  upstreamUrl.search = url.search;
+  const headers = buildUpstreamHeaders(
+    request,
+    new URL(config.supabaseUrl).hostname,
+    config.customHeaders
+  );
 
-  // Clone headers, set upstream host
-  const headers = new Headers(request.headers);
-  headers.set('Host', upstreamUrl.hostname);
-  headers.delete('cf-connecting-ip');
-  headers.delete('cf-ray');
-  headers.delete('cf-visitor');
-  headers.delete('cf-ipcountry');
+  const startMs = Date.now();
+  let upstreamResponse: Response;
+  let usedBackup = false;
 
-  // Add custom headers if configured
-  if (config.customHeaders) {
-    for (const [key, value] of Object.entries(config.customHeaders)) {
-      headers.set(key, value);
-    }
+  try {
+    ({ response: upstreamResponse, usedBackup } = await fetchUpstream(
+      request, url.pathname, url.search, headers, config, env
+    ));
+  } catch {
+    return Response.json({ error: 'Upstream request failed. Please try again.' }, { status: 502 });
   }
 
-  // Forward request
-  const upstreamResponse = await fetch(upstreamUrl.toString(), {
-    method: request.method,
-    headers,
-    body: request.method !== 'GET' && request.method !== 'HEAD'
-      ? request.body
-      : undefined,
-    redirect: 'manual',
-  });
-
-  // Clone response headers
+  const latencyMs = Date.now() - startMs;
   const responseHeaders = new Headers(upstreamResponse.headers);
 
-  // Rewrite Location headers that redirect directly to the Supabase host.
-  // Only rewrite the *host* portion of the URL — NOT query params.
-  // This avoids breaking OAuth redirect_uri params (e.g. Google's redirect_uri
-  // must match exactly between the authorize request and the token exchange).
+  // Rewrite Location host only — leave query params (OAuth redirect_uri) untouched
   const location = responseHeaders.get('Location');
   if (location) {
     try {
       const locUrl = new URL(location);
-      const supabaseHost = new URL(config.supabaseUrl).hostname;
-      if (locUrl.hostname === supabaseHost) {
-        // Direct redirect to Supabase — rewrite host to proxy
+      if (locUrl.hostname === new URL(config.supabaseUrl).hostname) {
         locUrl.hostname = url.hostname;
         responseHeaders.set('Location', locUrl.toString());
       }
-      // If Location points to an external host (e.g. accounts.google.com),
-      // leave it untouched — including any redirect_uri query params.
-    } catch {
-      // Malformed Location header — leave it as-is
-    }
+    } catch { /* malformed — leave as-is */ }
   }
 
-  // Add CORS headers
   addCorsHeaders(responseHeaders, request, config);
-
-  // Add proxy identifier header
   responseHeaders.set('X-Proxied-By', 'JioBase');
+  if (usedBackup) responseHeaders.set('X-JioBase-Failover', 'backup');
 
-  // Write analytics (fire-and-forget)
+  // Fire-and-forget analytics — never block the response
   try {
     env.ANALYTICS.writeDataPoint({
       blobs: [
-        config.appId,
-        request.method,
-        url.pathname,
-        request.headers.get('cf-ipcountry') || 'unknown',
+        config.appId,                                                    // blob1: app
+        request.method,                                                  // blob2: method
+        url.pathname,                                                    // blob3: path
+        request.headers.get('cf-ipcountry') || 'unknown',               // blob4: country
+        service || 'unknown',                                            // blob5: service
+        usedBackup ? 'backup' : 'primary',                              // blob6: upstream
       ],
-      doubles: [upstreamResponse.status],
+      doubles: [
+        upstreamResponse.status,                                         // double1: status
+        latencyMs,                                                       // double2: latency ms
+        parseInt(request.headers.get('content-length') || '0'),         // double3: req bytes
+        parseInt(upstreamResponse.headers.get('content-length') || '0'), // double4: res bytes
+      ],
       indexes: [config.appId],
     });
-  } catch {
-    // Analytics write failure should not break the proxy
-  }
+  } catch { /* analytics failure must never affect proxy */ }
 
   return new Response(upstreamResponse.body, {
     status: upstreamResponse.status,
     statusText: upstreamResponse.statusText,
     headers: responseHeaders,
   });
-}
-
-function getServiceFromPath(pathname: string): SupabaseService | null {
-  // Supabase paths: /rest/v1/..., /auth/v1/..., /storage/v1/..., /realtime/v1/...
-  const match = pathname.match(/^\/([a-z]+)\//);
-  if (!match) return null;
-  return SERVICE_PATH_MAP[match[1]] || null;
 }

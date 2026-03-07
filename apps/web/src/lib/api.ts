@@ -66,6 +66,26 @@ export const api = {
 
     toggle: (id: string) =>
       request<{ data: AppRecord }>(`/apps/${id}/toggle`, { method: 'POST' }),
+
+    failoverStatus: (id: string) =>
+      request<{ data: FailoverStatus }>(`/apps/${id}/failover-status`),
+
+    failoverReset: (id: string) =>
+      request<{ message: string }>(`/apps/${id}/failover-reset`, { method: 'POST' }),
+  },
+
+  analytics: {
+    overview: (id: string, window = '24h') =>
+      request<{ data: AnalyticsOverview }>(`/apps/${id}/analytics?window=${window}`),
+
+    latency: (id: string, window = '24h') =>
+      request<{ data: LatencyPercentiles }>(`/apps/${id}/analytics/latency?window=${window}`),
+
+    endpoints: (id: string, window = '24h') =>
+      request<{ data: EndpointBreakdown[] }>(`/apps/${id}/analytics/endpoints?window=${window}`),
+
+    errors: (id: string, window = '24h') =>
+      request<{ data: { buckets: ErrorBucket[]; spikeDetected: boolean } }>(`/apps/${id}/analytics/errors?window=${window}`),
   },
 };
 
@@ -85,7 +105,16 @@ export interface AppRecord {
   supabase_url: string;
   supabase_anon_key: string | null;
   is_active: number;
+  // Rate limiting
   rate_limit_per_minute: number;
+  rate_limit_burst_size: number;
+  track_per_ip: number;
+  track_per_user: number;
+  // Failover
+  backup_supabase_url: string | null;
+  enable_failover: number;
+  failover_threshold_ms: number;
+  // Config
   allowed_origins: string;
   custom_headers: string | null;
   enabled_services: string;
@@ -93,4 +122,40 @@ export interface AppRecord {
   last_request_at: number | null;
   created_at: number;
   updated_at: number;
+}
+
+export interface FailoverStatus {
+  appId: string;
+  activeUrl: 'primary' | 'backup';
+  isFailing: boolean;
+  failedAt: number | null;
+  failoverEnabled: boolean;
+}
+
+export interface LatencyPercentiles {
+  p50: number;
+  p95: number;
+  p99: number;
+  totalRequests: number;
+  windowHours: number;
+}
+
+export interface EndpointBreakdown {
+  service: string;
+  requests: number;
+  percentage: number;
+}
+
+export interface ErrorBucket {
+  hour: string;
+  total: number;
+  errors: number;
+  errorRate: number;
+}
+
+export interface AnalyticsOverview {
+  latency: LatencyPercentiles;
+  endpoints: EndpointBreakdown[];
+  errors: ErrorBucket[];
+  spikeDetected: boolean;
 }
